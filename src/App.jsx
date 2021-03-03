@@ -1,5 +1,12 @@
-const element = (<h1>
-  Создаем приложение
-</h1>);
+const ItemList = () => (<ul>
+    <li>1</li>
+    <li>2</li>
+  </ul>
+);
 
-export { element };
+const App = () => (<div>
+    <h1>Создаем приложение</h1>
+    <ItemList />
+  </div>);
+
+export default App;
