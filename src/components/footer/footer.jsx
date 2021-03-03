@@ -1,6 +1,6 @@
-const Footer = () => (
+const Footer = ({ count }) => (
     <footer>
-        Footer
+        Осталось выполнить дел: {count}
     </footer>
 );
 
