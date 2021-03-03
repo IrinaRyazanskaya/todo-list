@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import { count, length } from './number';
 
 const fruit = 'apple';
 const isHuman = true;
@@ -44,6 +45,9 @@ function App() {
         }}>
           Пробуем вывести в разметку undefined: {undefined}, null: {null}, false: {false},
           true: {true}, но ничего не получается
+        </p>
+        <p>
+          Выведем произведение переменных: {count} * {length} = {count * length}
         </p>
         <a
           className="App-link"
