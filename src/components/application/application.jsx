@@ -1,6 +1,8 @@
 import { InputItem } from '../input-item/input-item';
 import { ItemList } from '../item-list/item-list';
 import { Footer } from '../footer/footer';
+import './application.css';
+import '../../assets/fonts.css';
 
 const Application = () => {
     const items = [
@@ -16,8 +18,8 @@ const Application = () => {
     ];
 
     return (
-        <div>
-            <h1>todos</h1>
+        <div className="todo-list">
+            <h1 className="todo-list__title">todos</h1>
             <InputItem />
             <ItemList items={items} />
             <Footer count={3} />

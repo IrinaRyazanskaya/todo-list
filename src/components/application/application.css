@@ -1,0 +1,10 @@
+.todo-list {
+    margin: auto;
+    width: 300px;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+}
+
+.todo-list__title {
+    font-size: 40px;
+    font-weight: 500;
+}
