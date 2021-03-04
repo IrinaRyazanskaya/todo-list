@@ -7,13 +7,17 @@ import '../../assets/fonts.css';
 const Application = () => {
     const items = [
         {
-            value: 'Сделать уборку'
+            value: 'Сделать уборку',
+            isDone: true
         },
         {
-            value: 'Сходить в магазин'
+            value: 'Сходить в магазин',
+            isDone: false
         },
         {
-            value: 'Приготовить ужин'
+            value: 'Приготовить ужин',
+            isDone: false
+
         }
     ];
 
