@@ -1,10 +1,10 @@
 import { Item } from '../item/item';
 
-const ItemList = ({ todoItem }) => (
+const ItemList = ({ items }) => (
     <ul>
-        <Item todoItem={todoItem} />
-        <Item todoItem={'Сходить в магазин'} />
-        <Item todoItem={'Приготовить ужин'} />
+        {items.map(item => (
+            <Item key={item.value} value={item.value} />
+        ))}
     </ul>
 );
 

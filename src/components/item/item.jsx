@@ -1,6 +1,6 @@
-const Item = ({ todoItem }) => (
+const Item = ({ value }) => (
     <li>
-        {todoItem}
+        {value}
     </li>
 );
 
