@@ -1,10 +1,34 @@
+:global(html),
+:global(body) {
+    margin: 0;
+    padding: 0;
+}
+
+.screen {
+    padding-top: 50px;
+    width: 100%;
+    height: calc(100vh - 50px);
+    background-color: #f5f5f5;
+}
+
 .wrap {
     margin: auto;
-    width: 300px;
+    padding-top: 24px;
+    width: 500px;
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    background-color: #fff;
+    box-shadow: 0 3px 10px rgba(104, 104, 104, .25);
 }
 
 .title {
-    font-size: 40px;
-    font-weight: 500;
+    margin: 0 auto 24px auto;
+    width: 258px;
+    font-size: 65px;
+    font-weight: 300;
+    color: #ecd4d4;
+    line-height: 65px;
+}
+
+.todo {
+    margin: 0 32px;
 }

@@ -1,0 +1,28 @@
+.wrap {
+    display: flex;
+    height: 36px;
+}
+
+.field {
+    padding: 0 4px 0 12px;
+    width: 382px;
+    height: 34px;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: #5c5c5c;
+    border: 1px solid #c2c2c2;
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    background-color: #fff;
+    outline: none;
+}
+
+.field::placeholder {
+    color: #c2c2c2;
+}
+
+.field:focus {
+    border-color: #adadad;
+    border-right: none;
+}

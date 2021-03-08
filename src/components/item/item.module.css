@@ -1,7 +1,51 @@
 .item {
-    color: #2a2a2a;
+    display: flex;
+    align-items: center;
+    margin: 22px 0;
+}
+
+.checkbox {
+    display: none;
+}
+
+.circle {
+    display: block;
+    margin-right: 14px;
+    width: 26px;
+    height: 26px;
+    border: 1px solid #c2c2c2;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.checkbox:checked + .circle {
+    border: 1px solid #82c7b2;
+    background-image: url(./done-icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.item {
+    font-size: 22px;
+    font-weight: 300;
+    color: #5c5c5c;
 }
 
 .done {
+    color: #c2c2c2;
     text-decoration: line-through;
+}
+
+.delete {
+    margin-left: auto;
+    padding: 2px 0 0 0;
+    border: none;
+    background-color: transparent;
+    opacity: 0;
+    outline: none;
+}
+
+.item:hover .delete {
+    opacity: 100%;
+    cursor: pointer;
 }
