@@ -27,6 +27,8 @@ class Application extends Component {
         ]
     };
 
+    onClickDone = (isDone) => console.log(isDone);
+
     render() {
         return (
             <div className={styles.screen}>
@@ -34,7 +36,7 @@ class Application extends Component {
                     <h1 className={styles.title}>todo list</h1>
                     <div className={styles.todo}>
                         <InputItem />
-                        <ItemList items={this.state.items} />
+                        <ItemList items={this.state.items} onClickDone={this.onClickDone} />
                     </div>
                     <Divider />
                     <Footer count={3} />

@@ -1,7 +1,7 @@
 import { Item } from '../item/item';
 import styles from './item-list.module.css';
 
-const ItemList = ({ items }) => (
+const ItemList = ({ items, onClickDone }) => (
     <ul className={styles.list}>
         {items.map(item => (
             <Item 
@@ -9,6 +9,7 @@ const ItemList = ({ items }) => (
                 value={item.value}
                 isDone={item.isDone}
                 optionId={item.optionId}
+                onClickDone={onClickDone}
             />
         ))}
     </ul>
