@@ -27,7 +27,19 @@ class Application extends Component {
         ]
     };
 
-    onClickDone = (isDone) => console.log(isDone);
+    onClickDone = id => {
+        const newItemList = this.state.items.map(item => {
+            const newItem = { ...item };
+
+            if (item.optionId === id) {
+                newItem.isDone = !item.isDone;
+            }
+
+            return newItem;
+        });
+
+        this.setState({ items: newItemList });
+    };
 
     render() {
         return (
