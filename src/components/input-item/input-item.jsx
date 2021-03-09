@@ -1,13 +1,17 @@
-import TextField from '@material-ui/core/TextField';
+import { AddButton } from '../add-button/add-button';
+import styles from './input-item.module.css';
 
 const InputItem = () => (
-    <TextField
-        id="outlined-full-width"
-        label="Добавить задание"
-        fullWidth
-        variant="outlined"
-        size="small"
-    />
+    <div className={styles.wrap}>
+        <input
+            className={styles.field}
+            type="text"
+            id="input-field"
+            name="text"
+            placeholder="Добавить задание"
+        />
+        <AddButton />
+    </div>
 );
 
 export { InputItem };

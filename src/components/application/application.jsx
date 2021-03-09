@@ -1,5 +1,6 @@
 import { InputItem } from '../input-item/input-item';
 import { ItemList } from '../item-list/item-list';
+import { Divider } from '../divider/divider';
 import { Footer } from '../footer/footer';
 import styles from './application.module.css';
 import '../../assets/fonts.css';
@@ -8,25 +9,32 @@ const Application = () => {
     const items = [
         {
             value: 'Сделать уборку',
-            isDone: true
+            isDone: true,
+            optionId: 'thing-1'
         },
         {
             value: 'Сходить в магазин',
-            isDone: false
+            isDone: false,
+            optionId: 'thing-2'
         },
         {
             value: 'Приготовить ужин',
-            isDone: false
-
+            isDone: false,
+            optionId: 'thing-3'
         }
     ];
 
     return (
-        <div className={styles.wrap}>
-            <h1 className={styles.title}>todos</h1>
-            <InputItem />
-            <ItemList items={items} />
-            <Footer count={3} />
+        <div className={styles.screen}>
+            <div className={styles.wrap}>
+                <h1 className={styles.title}>todo list</h1>
+                <div className={styles.todo}>
+                    <InputItem />
+                    <ItemList items={items} />
+                </div>
+                <Divider />
+                <Footer count={3} />
+            </div>
         </div>
     );
 };
