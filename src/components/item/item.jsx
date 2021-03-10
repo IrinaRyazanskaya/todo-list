@@ -2,7 +2,7 @@ import classnames from 'classnames';
 import iconDeleteSrc from './delete-icon.svg';
 import styles from './item.module.css';
 
-const Item = ({ value, isDone, optionId, onClickDone }) => (
+const Item = ({ value, isDone, optionId, onClickDone, onClickDelete }) => (
     <li className={styles.item}>
         <input
             className={styles.checkbox}
@@ -23,7 +23,10 @@ const Item = ({ value, isDone, optionId, onClickDone }) => (
         >
             {value}
         </span>
-        <button className={styles.delete}>
+        <button 
+            className={styles.delete}
+            onClick={() => onClickDelete(optionId)}
+        >
             <img
                 src={iconDeleteSrc}
                 alt="Мусорная корзина"

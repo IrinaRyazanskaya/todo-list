@@ -41,6 +41,14 @@ class Application extends Component {
         this.setState({ items: newItemList });
     };
 
+    onClickDelete = id => {
+        const newItemList = this.state.items.filter(item => {
+            return item.optionId !== id;
+        });
+
+        this.setState({ items: newItemList });
+    };
+
     render() {
         return (
             <div className={styles.screen}>
@@ -48,7 +56,11 @@ class Application extends Component {
                     <h1 className={styles.title}>todo list</h1>
                     <div className={styles.todo}>
                         <InputItem />
-                        <ItemList items={this.state.items} onClickDone={this.onClickDone} />
+                        <ItemList 
+                            items={this.state.items}
+                            onClickDone={this.onClickDone}
+                            onClickDelete={this.onClickDelete}
+                        />
                     </div>
                     <Divider />
                     <Footer count={3} />
