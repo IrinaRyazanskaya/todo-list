@@ -7,8 +7,8 @@ import styles from './application.module.css';
 import '../../assets/fonts.css';
 
 class Application extends Component {
-    render() {
-        const items = [
+    state = {
+        items: [
             {
                 value: 'Сделать уборку',
                 isDone: true,
@@ -24,15 +24,17 @@ class Application extends Component {
                 isDone: false,
                 optionId: 'thing-3'
             }
-        ];
-    
+        ]
+    };
+
+    render() {
         return (
             <div className={styles.screen}>
                 <div className={styles.wrap}>
                     <h1 className={styles.title}>todo list</h1>
                     <div className={styles.todo}>
                         <InputItem />
-                        <ItemList items={items} />
+                        <ItemList items={this.state.items} />
                     </div>
                     <Divider />
                     <Footer count={3} />
