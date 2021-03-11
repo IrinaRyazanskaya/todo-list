@@ -10,7 +10,7 @@ const Item = ({ value, isDone, optionId, onClickDone, onClickDelete }) => (
             type="checkbox"
             name="checkbox"
             checked={isDone}
-            onClick={() => onClickDone(optionId)}
+            onChange={() => onClickDone(optionId)}
         />
         <label className={styles.circle} htmlFor={optionId}></label>
         <span

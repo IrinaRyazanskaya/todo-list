@@ -5,7 +5,7 @@ const ItemList = ({ items, onClickDone, onClickDelete }) => (
     <ul className={styles.list}>
         {items.map(item => (
             <Item 
-                key={item.value}
+                key={item.optionId}
                 value={item.value}
                 isDone={item.isDone}
                 optionId={item.optionId}

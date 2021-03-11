@@ -12,19 +12,19 @@ class Application extends Component {
             {
                 value: 'Сделать уборку',
                 isDone: true,
-                optionId: 'thing-1'
+                optionId: 1
             },
             {
                 value: 'Сходить в магазин',
                 isDone: false,
-                optionId: 'thing-2'
+                optionId: 2
             },
             {
                 value: 'Приготовить ужин',
                 isDone: false,
-                optionId: 'thing-3'
+                optionId: 3
             }
-        ]
+        ],
     };
 
     onClickDone = id => {
@@ -49,13 +49,24 @@ class Application extends Component {
         this.setState({ items: newItemList });
     };
 
+    onClickAdd = value => this.setState(state => ({
+        items: [
+            ...state.items,
+            {
+                value,
+                isDone: false,
+                optionId: state.items.length + 1
+            }
+        ]
+    }));
+
     render() {
         return (
             <div className={styles.screen}>
                 <div className={styles.wrap}>
                     <h1 className={styles.title}>todo list</h1>
                     <div className={styles.todo}>
-                        <InputItem />
+                        <InputItem onClickAdd={this.onClickAdd} />
                         <ItemList 
                             items={this.state.items}
                             onClickDone={this.onClickDone}
@@ -63,7 +74,7 @@ class Application extends Component {
                         />
                     </div>
                     <Divider />
-                    <Footer count={3} />
+                    <Footer count={this.state.items.length} />
                 </div>
             </div>
         );

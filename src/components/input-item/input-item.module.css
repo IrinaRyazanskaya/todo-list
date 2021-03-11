@@ -1,4 +1,5 @@
 .wrap {
+    position: relative;
     display: flex;
     height: 36px;
 }
@@ -11,6 +12,7 @@
     font-size: 22px;
     font-weight: 300;
     color: #5c5c5c;
+    text-transform: uppercase;
     border: 1px solid #c2c2c2;
     border-right: none;
     border-radius: 5px 0 0 5px;
@@ -20,9 +22,40 @@
 
 .field::placeholder {
     color: #c2c2c2;
+    text-transform: none;
 }
 
 .field:focus {
     border-color: #adadad;
     border-right: none;
+}
+
+.fieldError {
+    border: 1px solid #e09f9f;
+    border-right: none; 
+}
+
+.error {
+    position: absolute;
+    bottom: 42px;
+    right: 40px;
+    padding: 1px 6px;
+    height: 18px;
+    background-color: #fce6e6;
+    font-size: 14px;
+    color: #df9696;
+    border-radius: 4px;
+}
+
+.error::before {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 0;
+    left: 150px;
+    bottom: -10px;
+    border: 12px solid #fce6e6;
+    border-bottom-width: 0;
+    border-right-color: transparent;
+    border-left-color: transparent;
 }

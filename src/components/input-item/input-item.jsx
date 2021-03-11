@@ -1,17 +1,61 @@
+import { Component } from 'react';
+import classnames from 'classnames';
 import { AddButton } from '../add-button/add-button';
 import styles from './input-item.module.css';
 
-const InputItem = () => (
-    <div className={styles.wrap}>
-        <input
-            className={styles.field}
-            type="text"
-            id="input-field"
-            name="text"
-            placeholder="Добавить задание"
-        />
-        <AddButton />
-    </div>
-);
+class InputItem extends Component {
+    state = {
+        inputValue: '',
+        error: undefined
+    };
+
+    onAddButtonClick = () => {
+        if (this.state.inputValue === '') {
+            this.setState({ error: 'Пожалуйста, введите текст' });
+            return;
+        }
+
+        this.setState({
+            inputValue: '',
+        });
+
+        this.props.onClickAdd(this.state.inputValue.toUpperCase());
+    }
+
+    onInputChange = (event) => {
+        this.setState({
+            inputValue: event.target.value,
+            error: undefined
+        });
+
+    }
+
+    render() {
+        const showError = this.state.error;
+
+        return (
+            <div className={styles.wrap}>
+                {showError && (
+                    <div className={styles.error}>{showError}</div>
+                )}
+                <input
+                    className={
+                        classnames({
+                            [styles.field]: true,
+                            [styles.fieldError]: showError
+                        })
+                    }
+                    type="text"
+                    id="input-field"
+                    name="text"
+                    placeholder="Добавить задание"
+                    value={this.state.inputValue}
+                    onChange={this.onInputChange}
+                />
+                <AddButton onClickAdd={this.onAddButtonClick} />
+            </div>
+        );
+    }
+}
 
 export { InputItem };
