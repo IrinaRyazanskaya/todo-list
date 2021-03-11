@@ -36,4 +36,9 @@ const Item = ({ value, isDone, optionId, onClickDone, onClickDelete }) => (
 
 );
 
+Item.defaultProps = {
+    value: 'Задача не создана',
+    isDone: false
+};
+
 export { Item };
