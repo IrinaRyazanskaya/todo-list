@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import classnames from 'classnames';
 import { AddButton } from '../add-button/add-button';
+import PropTypes from 'prop-types';
+
 import styles from './input-item.module.css';
 
 class InputItem extends Component {
@@ -57,5 +59,9 @@ class InputItem extends Component {
         );
     }
 }
+
+InputItem.propTypes = {
+    onClickAdd: PropTypes.func.isRequired
+};
 
 export { InputItem };

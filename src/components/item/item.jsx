@@ -1,5 +1,7 @@
 import classnames from 'classnames';
 import iconDeleteSrc from './delete-icon.svg';
+import PropTypes from 'prop-types';
+
 import styles from './item.module.css';
 
 const Item = ({ value, isDone, optionId, onClickDone, onClickDelete }) => (
@@ -36,9 +38,10 @@ const Item = ({ value, isDone, optionId, onClickDone, onClickDelete }) => (
 
 );
 
-Item.defaultProps = {
-    value: 'Задача не создана',
-    isDone: false
+Item.propTypes = {
+    value: PropTypes.string.isRequired,
+    isDone: PropTypes.bool.isRequired,
+    optionId: PropTypes.number.isRequired
 };
 
 export { Item };
