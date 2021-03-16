@@ -14,16 +14,16 @@ class Application extends Component {
                 isDone: true,
                 optionId: 1
             },
-            {
-                value: 'Сходить в магазин',
-                isDone: false,
-                optionId: 2
-            },
-            {
-                value: 'Приготовить ужин',
-                isDone: false,
-                optionId: 3
-            }
+            // {
+            //     value: 'Сходить в магазин',
+            //     isDone: false,
+            //     optionId: 2
+            // },
+            // {
+            //     value: 'Приготовить ужин',
+            //     isDone: false,
+            //     optionId: 3
+            // }
         ],
     };
 
