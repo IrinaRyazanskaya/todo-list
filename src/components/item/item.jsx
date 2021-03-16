@@ -7,7 +7,7 @@ import styles from './item.module.css';
 
 class Item extends Component {
     componentDidMount() {
-        console.log('componentDidMount');
+        this.timerId = setInterval(() => console.log('interval'), 1000);
     }
 
     componentDidUpdate() {
@@ -15,7 +15,7 @@ class Item extends Component {
     }
 
     componentWillUnmount() {
-        console.log('componentWillUnmount');
+        clearInterval(this.timerId);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
