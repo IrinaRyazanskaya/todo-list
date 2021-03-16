@@ -4,6 +4,14 @@
     margin: 22px 0;
 }
 
+.item:first-of-type {
+    margin-top: 10px;
+}
+
+.item:last-of-type {
+    margin-bottom: 10px;
+}
+
 .checkbox {
     display: none;
 }
