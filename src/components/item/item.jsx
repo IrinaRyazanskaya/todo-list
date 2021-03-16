@@ -18,6 +18,10 @@ class Item extends Component {
         console.log('componentWillUnmount');
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        return this.props.isDone !== nextProps.isDone;
+    }
+
     render() {
         const { value, isDone, optionId, onClickDone, onClickDelete } = this.props;
 
