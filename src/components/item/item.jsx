@@ -6,22 +6,6 @@ import PropTypes from 'prop-types';
 import styles from './item.module.css';
 
 class Item extends Component {
-    componentDidMount() {
-        this.timerId = setInterval(() => console.log('interval'), 1000);
-    }
-
-    componentDidUpdate() {
-        console.log('componentDidUpdate');
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.timerId);
-    }
-
-    shouldComponentUpdate(nextProps, nextState) {
-        return this.props.isDone !== nextProps.isDone;
-    }
-
     render() {
         const { value, isDone, optionId, onClickDone, onClickDelete } = this.props;
 
