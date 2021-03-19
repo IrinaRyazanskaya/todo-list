@@ -1,0 +1,12 @@
+.wrap {
+    margin-top: 50px;
+    width: 500px;
+    height: 472px;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    background-color: #fff;
+    box-shadow: 0 3px 10px rgba(104, 104, 104, .25);
+}
+
+.header {
+    margin: 24px 0 24px 30px;
+}
