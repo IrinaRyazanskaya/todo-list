@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 import { InputItem } from '../input-item/input-item';
 import { ItemList } from '../item-list/item-list';
 import { Divider } from '../divider/divider';
@@ -6,70 +7,32 @@ import { Footer } from '../footer/footer';
 import styles from './todo.module.css';
 import '../../assets/fonts.css';
 
-const initialState = {
-    items: [
-        {
-            value: 'Сделать уборку',
-            isDone: true,
-            optionId: 1
-        },
-        {
-            value: 'Сходить в магазин',
-            isDone: false,
-            optionId: 2
-        },
-        {
-            value: 'Приготовить ужин',
-            isDone: false,
-            optionId: 3
-        }
-    ],
-};
-
 const Todo = () => {
-    const [items, setItems] = useState(initialState.items);
-
-    useEffect(() => {
-        console.log('update');
+    const items = useSelector((state) => { 
+        return state.todo.items;
     });
 
-    useEffect(() => {
-        console.log('mount');
-    }, []);
+    const dispatch = useDispatch();
 
-    const onClickDone = id => {
-        const newItemList = items.map(item => {
-            const newItem = { ...item };
-
-            if (item.optionId === id) {
-                newItem.isDone = !item.isDone;
-            }
-
-            return newItem;
-        });
-
-        setItems(newItemList);
+    const onClickAdd = (value) => {
+        dispatch({
+            type: 'todo/add',
+            payload: value
+        })
     };
 
-    const onClickDelete = id => {
-        const newItemList = items.filter(item => {
-            return item.optionId !== id;
-        });
-
-        setItems(newItemList);
+    const onClickDelete = (id) => {
+        dispatch({
+            type: 'todo/delete',
+            payload: id
+        })
     };
 
-    const onClickAdd = value => {
-        const newItems = [
-            ...items,
-            {
-                value,
-                isDone: false,
-                optionId: items.length + 1
-            }
-        ];
-
-        setItems(newItems);
+    const onClickDone = (id) => {
+        dispatch({
+            type: 'todo/done',
+            payload: id
+        })
     };
 
     return (
