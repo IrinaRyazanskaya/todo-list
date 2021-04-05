@@ -1,21 +1,5 @@
 const initialTodoState = {
-    items: [
-        {
-            value: 'Сделать уборку',
-            isDone: true,
-            optionId: 1
-        },
-        {
-            value: 'Сходить в магазин',
-            isDone: false,
-            optionId: 2
-        },
-        {
-            value: 'Приготовить ужин',
-            isDone: false,
-            optionId: 3
-        },
-    ],
+    items: [],
     filter: 'all',
     sort: 'normal',
 };

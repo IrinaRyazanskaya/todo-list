@@ -1,6 +1,3 @@
-import PropTypes from 'prop-types';
-import { useSelector, useDispatch } from 'react-redux';
-
 import styles from './filters.module.css';
 
 const Filters = ({
@@ -54,9 +51,5 @@ const Filters = ({
         </div>
     </div>
 );
-
-// Filters.propTypes = {
-//     count: PropTypes.number.isRequired
-// };
 
 export { Filters };

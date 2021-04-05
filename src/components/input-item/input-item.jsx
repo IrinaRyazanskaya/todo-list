@@ -1,7 +1,7 @@
+import { connect } from 'react-redux';
 import { Component } from 'react';
 import classnames from 'classnames';
 import { AddButton } from '../add-button/add-button';
-import PropTypes from 'prop-types';
 
 import styles from './input-item.module.css';
 
@@ -17,6 +17,13 @@ class InputItem extends Component {
             return;
         }
 
+        for (const item of this.props.allItems) {
+            if (item.value === this.state.inputValue) {
+                this.setState({ error: 'Такое дело уже существует' });
+                return;
+            }
+        }
+
         this.setState({
             inputValue: '',
         });
@@ -29,11 +36,11 @@ class InputItem extends Component {
             inputValue: event.target.value,
             error: undefined
         });
-
     }
 
     render() {
         const showError = this.state.error;
+        console.log(this.props);
 
         return (
             <div className={styles.wrap}>
@@ -60,8 +67,12 @@ class InputItem extends Component {
     }
 }
 
-InputItem.propTypes = {
-    onClickAdd: PropTypes.func.isRequired
-};
+function mapStateToProps(state) {
+    return {
+        allItems: state.todo.items,
+    };
+}
 
-export { InputItem };
+const EnhancedInputItem = connect(mapStateToProps)(InputItem);
+
+export { EnhancedInputItem as InputItem };
