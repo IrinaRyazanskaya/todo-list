@@ -10,16 +10,6 @@ const Navigation = () => {
                     <NavLink
                         className={styles.link}
                         activeClassName={styles.linkActive}
-                        to="/"
-                        exact
-                    >
-                        Обо мне
-                    </NavLink>
-                </li>
-                <li className={styles.item}>
-                    <NavLink
-                        className={styles.link}
-                        activeClassName={styles.linkActive}
                         to="/todo"
                         exact
                     >
@@ -30,10 +20,10 @@ const Navigation = () => {
                     <NavLink
                         className={styles.link}
                         activeClassName={styles.linkActive}
-                        to="/contacts"
+                        to="/"
                         exact
                     >
-                        Контакты
+                        Обо мне
                     </NavLink>
                 </li>
             </ul>
