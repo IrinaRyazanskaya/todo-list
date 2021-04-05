@@ -14,8 +14,10 @@ const initialTodoState = {
             value: 'Приготовить ужин',
             isDone: false,
             optionId: 3
-        }
+        },
     ],
+    filter: 'all',
+    sort: 'normal',
 };
 
 function handleTodoAdd(state, text) {
@@ -24,27 +26,31 @@ function handleTodoAdd(state, text) {
         {
             value: text,
             isDone: false,
-            optionId: state.items.length + 1
+            optionId: state.items.length + 1,
         }
     ];
 
     return {
         items: newItems,
+        filter: state.filter,
+        sort: state.sort,
     };
 }
 
 function handleTodoDelete(state, id) {
-    const newItems = state.items.filter(item => {
+    const newItems = state.items.filter((item) => {
         return item.optionId !== id;
     });
 
     return {
         items: newItems,
+        filter: state.filter,
+        sort: state.sort,
     };
 }
 
 function handleTodoDone(state, id) {
-    const newItems = state.items.map(item => {
+    const newItems = state.items.map((item) => {
         const newItem = { ...item };
 
         if (item.optionId === id) {
@@ -56,6 +62,22 @@ function handleTodoDone(state, id) {
 
     return {
         items: newItems,
+        filter: state.filter,
+        sort: state.sort,
+    };
+}
+
+function handleTodoFilter(state, filterValue) {
+    return {
+        ...state,
+        filter: filterValue,
+    };
+}
+
+function handleTodoSort(state, sortValue) {
+    return {
+        ...state,
+        sort: sortValue,
     };
 }
 
@@ -69,6 +91,12 @@ function todoReducer(state = initialTodoState, action) {
         }
         case 'todo/done': {
             return handleTodoDone(state, action.payload);
+        }
+        case 'todo/filter': {
+            return handleTodoFilter(state, action.payload);
+        }
+        case 'todo/sort': {
+            return handleTodoSort(state, action.payload);
         }
         default:
             return state;

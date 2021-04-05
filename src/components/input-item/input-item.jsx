@@ -21,7 +21,7 @@ class InputItem extends Component {
             inputValue: '',
         });
 
-        this.props.onClickAdd(this.state.inputValue.toUpperCase());
+        this.props.onClickAdd(this.state.inputValue);
     }
 
     onInputChange = (event) => {
