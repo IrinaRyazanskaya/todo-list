@@ -18,9 +18,6 @@ const Application = () => {
                     <Route path='/todo'>
                         <Todo />
                     </Route>
-                    <Route path='/contacts'>
-                        <Contacts />
-                    </Route>
                 </Switch>
             </div>
         </Router>

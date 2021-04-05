@@ -24,10 +24,11 @@
     border: 1px solid #c2c2c2;
     border-radius: 50%;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 .checkbox:checked + .circle {
-    border: 1px solid #82c7b2;
+    border: 1px solid #6bb1c7;
     background-image: url(./done-icon.svg);
     background-repeat: no-repeat;
     background-position: center;
