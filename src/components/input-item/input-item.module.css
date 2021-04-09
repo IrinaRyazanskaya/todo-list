@@ -36,12 +36,12 @@
 
 .error {
     position: absolute;
-    bottom: 42px;
+    top: 46px;
     right: 40px;
     padding: 1px 6px;
-    height: 18px;
+    height: 20px;
     background-color: #fce6e6;
-    font-size: 14px;
+    font-size: 16px;
     color: #df9696;
     border-radius: 4px;
 }
@@ -52,9 +52,9 @@
     width: 0;
     height: 0;
     left: 150px;
-    bottom: -10px;
+    bottom: 20px;
     border: 12px solid #fce6e6;
-    border-bottom-width: 0;
+    border-top-width: 0;
     border-right-color: transparent;
     border-left-color: transparent;
 }

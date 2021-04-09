@@ -19,7 +19,7 @@ class InputItem extends Component {
 
         for (const item of this.props.allItems) {
             if (item.value === this.state.inputValue) {
-                this.setState({ error: 'Такое дело уже существует' });
+                this.setState({ error: 'Такая задача уже существует' });
                 return;
             }
         }

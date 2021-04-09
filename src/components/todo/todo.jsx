@@ -109,7 +109,7 @@ const Todo = () => {
                         <img
                             className={styles.sortIcon}
                             src={iconSortSrc}
-                            alt="Стрелки вверх и вниз"
+                            alt='Стрелки вверх и вниз'
                         />
                     </button>
                     <Filters
@@ -127,7 +127,7 @@ const Todo = () => {
                         ? <div className={styles.emptyWrap}>
                             <img
                                 src={iconEmptySrc}
-                                alt=''
+                                alt='Девушка записывает дела'
                                 className={styles.emptyImage}
                             />
                             <p className={styles.emptyText}>
