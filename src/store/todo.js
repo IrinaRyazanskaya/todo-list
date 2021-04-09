@@ -1,8 +1,12 @@
-const initialTodoState = {
+import { getFromLocalStorage, saveToLocalStorage } from '../utils/local-storage';
+
+const defaultTodoState = {
     items: [],
-    filter: 'all',
-    sort: 'normal',
+    filter: "all",
+    sort: "normal"
 };
+
+const initialTodoState = getFromLocalStorage("todo-state", defaultTodoState);
 
 function handleTodoAdd(state, text) {
     const newItems = [
@@ -66,25 +70,36 @@ function handleTodoSort(state, sortValue) {
 }
 
 function todoReducer(state = initialTodoState, action) {
+    let newState;
+
     switch (action.type) {
         case 'todo/add': {
-            return handleTodoAdd(state, action.payload);
+            newState = handleTodoAdd(state, action.payload);
+            break;
         }
         case 'todo/delete': {
-            return handleTodoDelete(state, action.payload);
+            newState = handleTodoDelete(state, action.payload);
+            break;
         }
         case 'todo/done': {
-            return handleTodoDone(state, action.payload);
+            newState = handleTodoDone(state, action.payload);
+            break;
         }
         case 'todo/filter': {
-            return handleTodoFilter(state, action.payload);
+            newState = handleTodoFilter(state, action.payload);
+            break;
         }
         case 'todo/sort': {
-            return handleTodoSort(state, action.payload);
+            newState = handleTodoSort(state, action.payload);
+            break;
         }
         default:
-            return state;
+            newState = state;
     }
+
+    saveToLocalStorage("todo-state", newState);
+
+    return newState;
 }
 
 export { todoReducer };
