@@ -97,6 +97,20 @@ const Todo = () => {
         }
     }
 
+    const handleOnDragEnd = (result) => {
+        if (!result.destination) {
+            return;
+        }
+
+        dispatch({
+            type: 'todo/reorder',
+            payload: {
+                source: items[result.source.index].optionId,
+                destination: items[result.destination.index].optionId
+            }
+        })
+    };
+
     return (
         <article className={styles.screen}>
             <div className={styles.wrap}>
@@ -141,6 +155,7 @@ const Todo = () => {
                             items={items}
                             onClickDone={onClickDone}
                             onClickDelete={onClickDelete}
+                            onDragEnd={handleOnDragEnd}
                         />}
                 </div>
                 <Divider />

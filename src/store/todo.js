@@ -19,9 +19,8 @@ function handleTodoAdd(state, text) {
     ];
 
     return {
-        items: newItems,
-        filter: state.filter,
-        sort: state.sort,
+        ...state,
+        items: newItems
     };
 }
 
@@ -31,9 +30,8 @@ function handleTodoDelete(state, id) {
     });
 
     return {
-        items: newItems,
-        filter: state.filter,
-        sort: state.sort,
+        ...state,
+        items: newItems
     };
 }
 
@@ -49,9 +47,8 @@ function handleTodoDone(state, id) {
     });
 
     return {
-        items: newItems,
-        filter: state.filter,
-        sort: state.sort,
+        ...state,
+        items: newItems
     };
 }
 
@@ -66,6 +63,26 @@ function handleTodoSort(state, sortValue) {
     return {
         ...state,
         sort: sortValue,
+    };
+}
+
+function handleTodoReorder(state, {source, destination}) {
+    const reorderedItems = [...state.items];
+
+    const sourceIndex = reorderedItems.findIndex((item) => {
+        return item.optionId === source;
+    });
+
+    const destinationIndex = reorderedItems.findIndex((item) => {
+        return item.optionId === destination;
+    });
+
+    const [reorderedItem] = reorderedItems.splice(sourceIndex, 1);
+    reorderedItems.splice(destinationIndex, 0, reorderedItem);
+
+    return {
+        ...state,
+        items: reorderedItems
     };
 }
 
@@ -91,6 +108,10 @@ function todoReducer(state = initialTodoState, action) {
         }
         case 'todo/sort': {
             newState = handleTodoSort(state, action.payload);
+            break;
+        }
+        case 'todo/reorder': {
+            newState = handleTodoReorder(state, action.payload);
             break;
         }
         default:

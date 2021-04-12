@@ -40,7 +40,6 @@ class InputItem extends Component {
 
     render() {
         const showError = this.state.error;
-        console.log(this.props);
 
         return (
             <div className={styles.wrap}>

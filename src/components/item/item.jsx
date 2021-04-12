@@ -1,53 +1,51 @@
-import { Component } from 'react';
+import { Draggable } from "react-beautiful-dnd";
 import classnames from 'classnames';
 import iconDeleteSrc from './delete-icon.svg';
-import PropTypes from 'prop-types';
 
 import styles from './item.module.css';
 
-class Item extends Component {
-    render() {
-        const { value, isDone, optionId, onClickDone, onClickDelete } = this.props;
-
-        return (
-            <li className={styles.item}>
-                <input
-                    className={styles.checkbox}
-                    id={optionId}
-                    type="checkbox"
-                    name="checkbox"
-                    checked={isDone}
-                    onChange={() => onClickDone(optionId)}
-                />
-                <label className={styles.circle} htmlFor={optionId}></label>
-                <span
-                    className={
-                        classnames({
-                            [styles.text]: true,
-                            [styles.done]: isDone
-                        })
-                    }
+const Item = ({ value, isDone, optionId, index, onClickDone, onClickDelete }) => {
+    return (
+        <Draggable draggableId={optionId.toString()} index={index}>
+            {(provided) => (
+                <li
+                    className={styles.item}
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
                 >
-                    {value}
-                </span>
-                <button
-                    className={styles.delete}
-                    onClick={() => onClickDelete(optionId)}
-                >
-                    <img
-                        src={iconDeleteSrc}
-                        alt="Мусорная корзина"
+                    <input
+                        className={styles.checkbox}
+                        id={optionId}
+                        type="checkbox"
+                        name="checkbox"
+                        checked={isDone}
+                        onChange={() => onClickDone(optionId)}
                     />
-                </button>
-            </li>
-        );
-    }
-}
-
-Item.propTypes = {
-    value: PropTypes.string.isRequired,
-    isDone: PropTypes.bool.isRequired,
-    optionId: PropTypes.number.isRequired
+                    <label className={styles.circle} htmlFor={optionId}></label>
+                    <span
+                        className={
+                            classnames({
+                                [styles.text]: true,
+                                [styles.done]: isDone
+                            })
+                        }
+                    >
+                        {value}
+                    </span>
+                    <button
+                        className={styles.delete}
+                        onClick={() => onClickDelete(optionId)}
+                    >
+                        <img
+                            src={iconDeleteSrc}
+                            alt="Мусорная корзина"
+                        />
+                    </button>
+                </li>
+            )}
+        </Draggable>
+    );
 };
 
 export { Item };

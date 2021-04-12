@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Navigation } from '../navigation/navigation';
 import { About } from '../about/about';
 import { Todo } from '../todo/todo';
-import { Contacts } from '../contacts/contacts';
 
 import styles from './application.module.css';
 
