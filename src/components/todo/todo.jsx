@@ -111,6 +111,16 @@ const Todo = () => {
         })
     };
 
+    const onChangeItem = (id, value) => {
+        dispatch({
+            type: 'todo/change',
+            payload: {
+                id,
+                value
+            }
+        })
+    };
+
     return (
         <article className={styles.screen}>
             <div className={styles.wrap}>
@@ -156,6 +166,7 @@ const Todo = () => {
                             onClickDone={onClickDone}
                             onClickDelete={onClickDelete}
                             onDragEnd={handleOnDragEnd}
+                            onChangeItem={onChangeItem}
                         />}
                 </div>
                 <Divider />

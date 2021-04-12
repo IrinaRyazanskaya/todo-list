@@ -1,7 +1,10 @@
 .item {
     display: flex;
     align-items: center;
-    height: 50px;
+    min-height: 50px;
+    font-size: 22px;
+    font-weight: 300;
+    color: #5c5c5c;
 }
 
 .checkbox {
@@ -26,12 +29,6 @@
     background-position: center;
 }
 
-.item {
-    font-size: 22px;
-    font-weight: 300;
-    color: #5c5c5c;
-}
-
 .done {
     color: #c2c2c2;
     text-decoration: line-through;
@@ -49,4 +46,15 @@
 .item:hover .delete {
     opacity: 100%;
     cursor: pointer;
+}
+
+.changeText {
+    padding: 0;
+    width: 100%;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: #8d8d8d;
+    border: none;
+    outline: none;
 }

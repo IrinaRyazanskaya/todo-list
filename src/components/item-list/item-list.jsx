@@ -4,7 +4,7 @@ import { Item } from '../item/item';
 
 import styles from './item-list.module.css';
 
-const ItemList = ({ items, onClickDone, onClickDelete, onDragEnd }) => {
+const ItemList = ({ items, onClickDone, onClickDelete, onDragEnd, onChangeItem }) => {
     return (
         <DragDropContext onDragEnd={onDragEnd}>
             <Droppable droppableId="itemsId">
@@ -23,6 +23,7 @@ const ItemList = ({ items, onClickDone, onClickDelete, onDragEnd }) => {
                                 index={index}
                                 onClickDone={onClickDone}
                                 onClickDelete={onClickDelete}
+                                onChangeItem={onChangeItem}
                             />
                         ))}
                         {provided.placeholder}

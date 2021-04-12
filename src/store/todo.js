@@ -86,6 +86,23 @@ function handleTodoReorder(state, {source, destination}) {
     };
 }
 
+function handleTodoChange(state, {id, value}) {
+    const newItems = state.items.map((item) => {
+        const newItem = { ...item };
+
+        if (item.optionId === id) {
+            newItem.value = value;
+        }
+
+        return newItem;
+    });
+
+    return {
+        ...state,
+        items: newItems
+    }
+}
+
 function todoReducer(state = initialTodoState, action) {
     let newState;
 
@@ -112,6 +129,10 @@ function todoReducer(state = initialTodoState, action) {
         }
         case 'todo/reorder': {
             newState = handleTodoReorder(state, action.payload);
+            break;
+        }
+        case 'todo/change': {
+            newState = handleTodoChange(state, action.payload);
             break;
         }
         default:
