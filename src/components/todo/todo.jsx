@@ -15,9 +15,9 @@ const Todo = () => {
         let itemsToShow = items;
 
         if (filter === 'active') {
-            itemsToShow = itemsToShow.filter((item) => (!item.isDone));
+            itemsToShow = itemsToShow.filter((item) => !item.isDone);
         } else if (filter === 'done') {
-            itemsToShow = itemsToShow.filter((item) => (item.isDone));
+            itemsToShow = itemsToShow.filter((item) => item.isDone);
         }
 
         if (sort === 'reverse') {
@@ -36,22 +36,22 @@ const Todo = () => {
     const onClickAdd = (value) => {
         dispatch({
             type: 'todo/add',
-            payload: value
-        })
+            payload: value,
+        });
     };
 
     const onClickDelete = (id) => {
         dispatch({
             type: 'todo/delete',
-            payload: id
-        })
+            payload: id,
+        });
     };
 
     const onClickDone = (id) => {
         dispatch({
             type: 'todo/done',
-            payload: id
-        })
+            payload: id,
+        });
     };
 
     const currentFilter = useSelector((state) => {
@@ -61,22 +61,22 @@ const Todo = () => {
     const onClickFilterAll = () => {
         dispatch({
             type: 'todo/filter',
-            payload: 'all'
-        })
+            payload: 'all',
+        });
     };
 
     const onClickFilterActive = () => {
         dispatch({
             type: 'todo/filter',
-            payload: 'active'
-        })
+            payload: 'active',
+        });
     };
 
     const onClickFilterDone = () => {
         dispatch({
             type: 'todo/filter',
-            payload: 'done'
-        })
+            payload: 'done',
+        });
     };
 
     const currentSort = useSelector((state) => {
@@ -87,15 +87,15 @@ const Todo = () => {
         if (currentSort === 'normal') {
             dispatch({
                 type: 'todo/sort',
-                payload: 'reverse'
-            })
+                payload: 'reverse',
+            });
         } else if (currentSort === 'reverse') {
             dispatch({
                 type: 'todo/sort',
-                payload: 'normal'
-            })
+                payload: 'normal',
+            });
         }
-    }
+    };
 
     const handleOnDragEnd = (result) => {
         if (!result.destination) {
@@ -106,9 +106,9 @@ const Todo = () => {
             type: 'todo/reorder',
             payload: {
                 source: items[result.source.index].optionId,
-                destination: items[result.destination.index].optionId
-            }
-        })
+                destination: items[result.destination.index].optionId,
+            },
+        });
     };
 
     const onChangeItem = (id, value) => {
@@ -116,9 +116,9 @@ const Todo = () => {
             type: 'todo/change',
             payload: {
                 id,
-                value
-            }
-        })
+                value,
+            },
+        });
     };
 
     return (
@@ -133,12 +133,16 @@ const Todo = () => {
                         <img
                             className={styles.sortIcon}
                             src={iconSortSrc}
-                            alt='Стрелки вверх и вниз'
+                            alt="Стрелки вверх и вниз"
                         />
                     </button>
                     <Filters
-                        countInProgress={itemsСount.filter(item => !item.isDone).length}
-                        countIsDone={itemsСount.filter(item => item.isDone).length}
+                        countInProgress={
+                            itemsСount.filter((item) => !item.isDone).length
+                        }
+                        countIsDone={
+                            itemsСount.filter((item) => item.isDone).length
+                        }
                         onClickFilterAll={onClickFilterAll}
                         onClickFilterActive={onClickFilterActive}
                         onClickFilterDone={onClickFilterDone}
@@ -147,11 +151,11 @@ const Todo = () => {
                 </header>
                 <div className={styles.todo}>
                     <InputItem onClickAdd={onClickAdd} />
-                    {(itemsСount.length === 0)
-                        ? <div className={styles.emptyWrap}>
+                    {itemsСount.length === 0 ? (
+                        <div className={styles.emptyWrap}>
                             <img
                                 src={iconEmptySrc}
-                                alt='Девушка записывает дела'
+                                alt="Девушка записывает дела"
                                 className={styles.emptyImage}
                             />
                             <p className={styles.emptyText}>
@@ -161,13 +165,15 @@ const Todo = () => {
                                 Сделайте это прямо сейчас!
                             </p>
                         </div>
-                        : <ItemList
+                    ) : (
+                        <ItemList
                             items={items}
                             onClickDone={onClickDone}
                             onClickDelete={onClickDelete}
                             onDragEnd={handleOnDragEnd}
                             onChangeItem={onChangeItem}
-                        />}
+                        />
+                    )}
                 </div>
                 <Divider />
             </div>

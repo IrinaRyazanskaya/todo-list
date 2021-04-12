@@ -4,7 +4,7 @@
     height: 472px;
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     background-color: #fff;
-    box-shadow: 0 3px 10px rgba(104, 104, 104, .25);
+    box-shadow: 0 3px 10px rgba(104, 104, 104, 0.25);
 }
 
 .header {

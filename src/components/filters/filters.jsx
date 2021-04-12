@@ -7,8 +7,7 @@ const Filters = ({
     onClickFilterActive,
     onClickFilterAll,
     currentFilter,
-}) =>
-(
+}) => (
     <div className={styles.filters}>
         <div className={styles.wrap}>
             <input

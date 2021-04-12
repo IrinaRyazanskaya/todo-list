@@ -11,10 +11,10 @@ const Application = () => {
             <div className={styles.wrap}>
                 <Navigation />
                 <Switch>
-                    <Route path='/' exact>
+                    <Route path="/" exact>
                         <About />
                     </Route>
-                    <Route path='/todo'>
+                    <Route path="/todo">
                         <Todo />
                     </Route>
                 </Switch>

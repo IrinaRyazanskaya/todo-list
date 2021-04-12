@@ -5,7 +5,15 @@ import iconDeleteSrc from './delete-icon.svg';
 
 import styles from './item.module.css';
 
-const Item = ({ value, isDone, optionId, index, onClickDone, onClickDelete, onChangeItem }) => {
+const Item = ({
+    value,
+    isDone,
+    optionId,
+    index,
+    onClickDone,
+    onClickDelete,
+    onChangeItem,
+}) => {
     const [toggle, setToggle] = useState(true);
     const [internalValue, setValue] = useState(value);
 
@@ -47,12 +55,10 @@ const Item = ({ value, isDone, optionId, index, onClickDone, onClickDelete, onCh
                     <label className={styles.circle} htmlFor={optionId}></label>
                     {toggle ? (
                         <span
-                            className={
-                                classnames({
-                                    [styles.text]: true,
-                                    [styles.done]: isDone
-                                })
-                            }
+                            className={classnames({
+                                [styles.text]: true,
+                                [styles.done]: isDone,
+                            })}
                             onDoubleClick={() => setToggle(false)}
                         >
                             {internalValue}
@@ -72,10 +78,7 @@ const Item = ({ value, isDone, optionId, index, onClickDone, onClickDelete, onCh
                         className={styles.delete}
                         onClick={() => onClickDelete(optionId)}
                     >
-                        <img
-                            src={iconDeleteSrc}
-                            alt="Мусорная корзина"
-                        />
+                        <img src={iconDeleteSrc} alt="Мусорная корзина" />
                     </button>
                 </li>
             )}

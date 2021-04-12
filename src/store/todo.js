@@ -1,12 +1,15 @@
-import { getFromLocalStorage, saveToLocalStorage } from '../utils/local-storage';
+import {
+    getFromLocalStorage,
+    saveToLocalStorage,
+} from '../utils/local-storage';
 
 const defaultTodoState = {
     items: [],
-    filter: "all",
-    sort: "normal"
+    filter: 'all',
+    sort: 'normal',
 };
 
-const initialTodoState = getFromLocalStorage("todo-state", defaultTodoState);
+const initialTodoState = getFromLocalStorage('todo-state', defaultTodoState);
 
 function handleTodoAdd(state, text) {
     const newItems = [
@@ -15,12 +18,12 @@ function handleTodoAdd(state, text) {
             value: text,
             isDone: false,
             optionId: state.items.length + 1,
-        }
+        },
     ];
 
     return {
         ...state,
-        items: newItems
+        items: newItems,
     };
 }
 
@@ -31,7 +34,7 @@ function handleTodoDelete(state, id) {
 
     return {
         ...state,
-        items: newItems
+        items: newItems,
     };
 }
 
@@ -48,7 +51,7 @@ function handleTodoDone(state, id) {
 
     return {
         ...state,
-        items: newItems
+        items: newItems,
     };
 }
 
@@ -66,7 +69,7 @@ function handleTodoSort(state, sortValue) {
     };
 }
 
-function handleTodoReorder(state, {source, destination}) {
+function handleTodoReorder(state, { source, destination }) {
     const reorderedItems = [...state.items];
 
     const sourceIndex = reorderedItems.findIndex((item) => {
@@ -82,11 +85,11 @@ function handleTodoReorder(state, {source, destination}) {
 
     return {
         ...state,
-        items: reorderedItems
+        items: reorderedItems,
     };
 }
 
-function handleTodoChange(state, {id, value}) {
+function handleTodoChange(state, { id, value }) {
     const newItems = state.items.map((item) => {
         const newItem = { ...item };
 
@@ -99,8 +102,8 @@ function handleTodoChange(state, {id, value}) {
 
     return {
         ...state,
-        items: newItems
-    }
+        items: newItems,
+    };
 }
 
 function todoReducer(state = initialTodoState, action) {
@@ -139,7 +142,7 @@ function todoReducer(state = initialTodoState, action) {
             newState = state;
     }
 
-    saveToLocalStorage("todo-state", newState);
+    saveToLocalStorage('todo-state', newState);
 
     return newState;
 }
