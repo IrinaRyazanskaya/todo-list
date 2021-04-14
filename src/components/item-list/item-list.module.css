@@ -2,6 +2,25 @@
     margin: 12px 0;
     padding: 0;
     list-style: none;
-    height: 350px;
+    height: 458px;
     overflow: scroll;
+}
+
+@media (max-width: 726px) {
+    .list {
+        margin: 6px 0;
+        height: 450px;
+    }
+}
+
+@media (max-width: 410px) {
+    .list {
+        height: 350px;
+    }
+}
+
+@media (max-width: 354px) {
+    .list {
+        height: 300px;
+    }
 }

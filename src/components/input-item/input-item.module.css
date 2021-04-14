@@ -58,3 +58,9 @@
     border-right-color: transparent;
     border-left-color: transparent;
 }
+
+@media (max-width: 354px) {
+    .error {
+        font-size: 14px;
+    }
+}

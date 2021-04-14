@@ -42,3 +42,13 @@
     background-color: #6bb1c7;
     color: #fff;
 }
+
+@media (max-width: 726px) {
+    .filters {
+        flex-wrap: wrap;
+    }
+
+    .wrap {
+        margin-right: 6px;
+    }
+}
