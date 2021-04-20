@@ -7,7 +7,12 @@ import styles from './repository.module.css';
 const Repository = ({ repo }) => {
     return (
         <li className={styles.repo}>
-            <a className={styles.link} href={repo.html_url} target="_blank">
+            <a
+                className={styles.link}
+                href={repo.html_url}
+                target="_blank"
+                rel="noreferrer"
+            >
                 {repo.name}
             </a>
             <div className={styles.info}>
@@ -19,7 +24,8 @@ const Repository = ({ repo }) => {
                         [styles.jsCircle]: repo.language === 'JavaScript',
                         [styles.pythonCircle]: repo.language === 'Python',
                         [styles.cPlusPlusCircle]: repo.language === 'C++',
-                        [styles.typeScriptCircle]: repo.language === 'TypeScript',
+                        [styles.typeScriptCircle]:
+                            repo.language === 'TypeScript',
                         [styles.emptyCircle]: repo.language === null,
                     })}
                 ></div>

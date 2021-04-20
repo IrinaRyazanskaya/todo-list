@@ -51,6 +51,7 @@ const Contacts = ({ userInfo }) => {
                         className={styles.socialLink}
                         href={userInfo.html_url}
                         target="_blank"
+                        rel="noreferrer"
                     >
                         <img
                             className={styles.socialIcon}
@@ -62,6 +63,7 @@ const Contacts = ({ userInfo }) => {
                         className={styles.socialLink}
                         href="https://t.me/irina_ryazanskaya"
                         target="_blank"
+                        rel="noreferrer"
                     >
                         <img
                             className={styles.socialIcon}
@@ -73,6 +75,7 @@ const Contacts = ({ userInfo }) => {
                         className={styles.socialLink}
                         href="https://www.instagram.com/irina__d/?hl=ru"
                         target="_blank"
+                        rel="noreferrer"
                     >
                         <img
                             className={styles.socialIcon}
@@ -84,6 +87,7 @@ const Contacts = ({ userInfo }) => {
                         className={styles.socialLink}
                         href="https://vk.com/id52333127"
                         target="_blank"
+                        rel="noreferrer"
                     >
                         <img
                             className={styles.socialIcon}
