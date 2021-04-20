@@ -1,0 +1,87 @@
+.repo {
+    margin: 8px 0;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.link {
+    color: #5c5c5c;
+    text-decoration: none;
+}
+
+.link:hover {
+    opacity: 0.7;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    margin-top: 6px;
+    font-size: 14px;
+    color: #999;
+}
+
+.languageCircle {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #999;
+}
+
+.htmlCircle {
+    background-color: #e34c26;
+}
+
+.cssCircle {
+    background-color: #563e7c;
+}
+
+.jsCircle {
+    background-color: #f0e159;
+}
+
+.pythonCircle {
+    background-color: #3673a5;
+}
+
+.cPlusPlusCircle {
+    background-color: #f44b7d;
+}
+
+.typeScriptCircle {
+    background-color: #2c748a;
+}
+
+.emptyCircle {
+    display: none;
+}
+
+.languageCircle,
+.icon {
+    margin-right: 4px;
+}
+
+.language,
+.star,
+.forks {
+    margin-right: 16px;
+}
+
+.languageEmpty {
+    margin-right: 0;
+}
+
+@media (max-width: 726px) {
+    .date {
+        display: none;
+    }
+
+    .repo {
+        margin-top: 0;
+    }
+
+    .repo:last-of-type {
+        margin-bottom: 0;
+    }
+}
