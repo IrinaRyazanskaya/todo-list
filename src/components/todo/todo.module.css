@@ -94,6 +94,7 @@
 
     .emptyWrap {
         margin-bottom: 12px;
+        height: 360px;;
     }
 
     .emptyText {
@@ -103,7 +104,7 @@
 
 @media (max-width: 410px) {
     .emptyWrap {
-        height: 350px;
+        height: 330px;
     }
 }
 

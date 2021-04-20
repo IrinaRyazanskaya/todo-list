@@ -34,3 +34,9 @@
     background-color: #6bb1c7;
     color: #fff;
 }
+
+@media (max-width: 726px) {
+    .nav {
+        margin: 16px 0 12px 0;
+    }
+}

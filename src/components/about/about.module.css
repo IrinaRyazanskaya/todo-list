@@ -89,7 +89,7 @@
 @media (max-width: 726px) {
     .wrap {
         width: 344px;
-        height: 612px;
+        height: 524px;
         font-size: 12px;
     }
 
@@ -105,7 +105,7 @@
 
 @media (max-width: 410px) {
     .wrap {
-        height: 512px;
+        height: 494px;
     }
 }
 

@@ -9,13 +9,13 @@
 @media (max-width: 726px) {
     .list {
         margin: 6px 0;
-        height: 450px;
+        height: 360px;
     }
 }
 
 @media (max-width: 410px) {
     .list {
-        height: 350px;
+        height: 330px;
     }
 }
 
