@@ -1,6 +1,14 @@
-import { Component } from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import { Octokit } from '@octokit/rest';
+import MediaQuery from 'react-responsive';
+import { Link } from 'react-router-dom';
+import { Contacts } from '../contacts/contacts';
+import { RepositoriesList } from '../repositories-list/repositories-list';
+import { UserLoader } from './user-loader';
+import { UserMobileLoader } from './user-mobile-loader';
+import { RepoLoader } from './repo-loader';
+import { RepoMobileLoader } from './repo-mobile-loader';
+import { Component } from 'react';
+import iconEmptySrc from './empty-icon.png';
 
 import styles from './about.module.css';
 
@@ -66,58 +74,88 @@ class About extends Component {
 
         return (
             <article className={styles.wrap}>
-                <h1 className={styles.header}>
-                    {isUserLoading || isRepoLoading ? (
-                        <CircularProgress color="secondary" />
-                    ) : (
-                        'Обо мне'
+                <section className={styles.aboutWrap}>
+                    {isUserLoading && (
+                        <>
+                            <MediaQuery maxDeviceWidth={726}>
+                                <UserMobileLoader />
+                            </MediaQuery>
+                            <MediaQuery minDeviceWidth={727}>
+                                <UserLoader />
+                            </MediaQuery>
+                        </>
                     )}
-                </h1>
-                {!isUserLoading && userStatus === 200 && (
-                    <div className={styles.info}>
-                        <img
-                            src={userInfo.avatar_url}
-                            alt="Аватар пользователя"
-                            className={styles.photo}
-                        ></img>
-                        <p className={styles.text}>
-                            <a
-                                className={styles.link}
-                                href={userInfo.html_url}
-                                target="_blank"
-                            >
-                                {userInfo.name}
-                            </a>
-                        </p>
-                        <p className={styles.text}>{userInfo.login}</p>
-                        <p className={styles.text}>{userInfo.bio}</p>
-                    </div>
-                )}
-                {!isUserLoading && userStatus !== 200 && (
-                    <div className={styles.error}>
-                        Ошибка загрузки информации о пользователе
-                    </div>
-                )}
-                {!isRepoLoading && (
-                    <ol className={styles.list}>
-                        {repoList.map((repo) => (
-                            <li key={repo.id} className={styles.listItem}>
-                                <a
-                                    className={styles.link}
-                                    href={repo.html_url}
-                                    target="_blank"
-                                >
-                                    {repo.name}
-                                </a>
-                            </li>
-                        ))}
-                    </ol>
-                )}
-                {!isRepoLoading && repoStatus !== 200 && (
-                    <div className={styles.error}>
-                        Ошибка загрузки списка репозиториев
-                    </div>
-                )}
+                    {!isUserLoading && userStatus === 200 && (
+                        <Contacts userInfo={userInfo} />
+                    )}
+                    {!isUserLoading && userStatus !== 200 && (
+                        <div className={styles.aboutError}>
+                            <p className={styles.aboutErrorText}>
+                                Ошибка загрузки информации о пользователе
+                            </p>
+                        </div>
+                    )}
+                </section>
+                <section className={styles.repositoriesWrap}>
+                    {isRepoLoading && (
+                        <>
+                            <MediaQuery maxDeviceWidth={726}>
+                                <RepoMobileLoader />
+                            </MediaQuery>
+                            <MediaQuery minDeviceWidth={727}>
+                                <RepoLoader />
+                            </MediaQuery>
+                        </>
+                    )}
+                    {!isRepoLoading &&
+                        repoStatus === 200 &&
+                        repoList.length > 0 && (
+                            <RepositoriesList repoList={repoList} />
+                        )}
+                    {!isRepoLoading &&
+                        repoStatus === 200 &&
+                        repoList.length === 0 && (
+                            <div className={styles.emptyWrap}>
+                                <img
+                                    src={iconEmptySrc}
+                                    alt="Девушка возле пустого листа"
+                                    className={styles.emptyImage}
+                                />
+                                <p className={styles.emptyText}>
+                                    Репозитории отсутствуют
+                                </p>
+                                <p className={styles.emptySubText}>
+                                    Добавьте как минимум один репозиторий
+                                    на&nbsp;
+                                    <a
+                                        className={styles.emptyLink}
+                                        href="https://github.com/"
+                                    >
+                                        github.com
+                                    </a>
+                                </p>
+                            </div>
+                        )}
+                    {!isRepoLoading && repoStatus !== 200 && (
+                        <div className={styles.errorWrap}>
+                            <img
+                                src={iconEmptySrc}
+                                alt="Девушка возле пустого листа"
+                                className={styles.errorImage}
+                            />
+                            <p className={styles.errorText}>
+                                Что-то пошло не так...
+                            </p>
+                            <p className={styles.errorSubText}>
+                                Попробуйте&nbsp;
+                                <Link className={styles.errorLink} to="/">
+                                    загрузить
+                                </Link>
+                                &nbsp;еще раз
+                            </p>
+                        </div>
+                    )}
+                </section>
             </article>
         );
     }

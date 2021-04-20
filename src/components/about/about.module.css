@@ -1,41 +1,121 @@
 .wrap {
-    width: 500px;
-    height: 472px;
+    display: flex;
+    flex-direction: column;
+    width: 850px;
+    height: 590px;
     font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     color: #5c5c5c;
+}
+
+.aboutError {
+    margin: 0 14px;
+    font-size: 20px;
+}
+
+.aboutErrorText {
+    text-align: center;
+}
+
+.aboutWrap,
+.repositoriesWrap {
     background-color: #fff;
     box-shadow: 0 3px 10px rgba(104, 104, 104, 0.25);
+    border-radius: 10px;
+}
+
+.aboutWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 14px;
+    padding: 12px 0;
+    min-height: 176px;
+}
+
+.repositoriesWrap {
+    padding: 20px 0;
+    flex-grow: 1;
     overflow: scroll;
 }
 
-.header {
-    margin: 24px 0 14px 30px;
+.errorWrap,
+.emptyWrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 32px;
+    height: 100%;
 }
 
-.photo {
-    width: 180px;
-    border-radius: 50%;
+.emptyWrap {
+    margin: 0;
 }
 
-.text,
-.photo,
-.error {
-    margin: 0 30px 8px 30px;
+.errorImage,
+.emptyImage {
+    width: 267px;
 }
 
-.link {
+.errorText,
+.emptyText {
+    margin: 24px 0 8px 0;
+    font-size: 20px;
     color: #5c5c5c;
 }
 
-.link:hover,
-.link:visited {
-    color: #272727;
+.errorSubText,
+.emptySubText {
+    margin: 0;
+    color: #999;
 }
 
-.list {
-    margin-left: 8px;
+.errorLink,
+.emptyLink {
+    color: #62a0b4;
 }
 
-.listItem {
-    margin-bottom: 8px;
+.errorLink:hover,
+.emptyLink:hover {
+    opacity: 0.7;
+}
+
+@media (max-width: 890px) {
+    .wrap {
+        width: 700px;
+    }
+}
+
+@media (max-width: 726px) {
+    .wrap {
+        width: 344px;
+        height: 612px;
+        font-size: 12px;
+    }
+
+    .aboutWrap {
+        margin-bottom: 6px;
+        min-height: 120px;
+    }
+
+    .emptySubText {
+        width: 182px;
+    }
+}
+
+@media (max-width: 410px) {
+    .wrap {
+        height: 512px;
+    }
+}
+
+@media (max-width: 354px) {
+    .wrap {
+        width: 310px;
+        height: 462px;
+    }
+
+    .aboutWrap {
+        min-height: 106px;
+    }
 }
