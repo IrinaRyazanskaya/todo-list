@@ -1,14 +1,14 @@
+import { connect } from 'react-redux';
 import { Component } from 'react';
 import classnames from 'classnames';
 import { AddButton } from '../add-button/add-button';
-import PropTypes from 'prop-types';
 
 import styles from './input-item.module.css';
 
 class InputItem extends Component {
     state = {
         inputValue: '',
-        error: undefined
+        error: undefined,
     };
 
     onAddButtonClick = () => {
@@ -17,36 +17,38 @@ class InputItem extends Component {
             return;
         }
 
+        for (const item of this.props.allItems) {
+            if (item.value === this.state.inputValue) {
+                this.setState({ error: 'Такая задача уже существует' });
+                return;
+            }
+        }
+
         this.setState({
             inputValue: '',
         });
 
-        this.props.onClickAdd(this.state.inputValue.toUpperCase());
-    }
+        this.props.onClickAdd(this.state.inputValue);
+    };
 
     onInputChange = (event) => {
         this.setState({
             inputValue: event.target.value,
-            error: undefined
+            error: undefined,
         });
-
-    }
+    };
 
     render() {
         const showError = this.state.error;
 
         return (
             <div className={styles.wrap}>
-                {showError && (
-                    <div className={styles.error}>{showError}</div>
-                )}
+                {showError && <div className={styles.error}>{showError}</div>}
                 <input
-                    className={
-                        classnames({
-                            [styles.field]: true,
-                            [styles.fieldError]: showError
-                        })
-                    }
+                    className={classnames({
+                        [styles.field]: true,
+                        [styles.fieldError]: showError,
+                    })}
                     type="text"
                     id="input-field"
                     name="text"
@@ -60,8 +62,12 @@ class InputItem extends Component {
     }
 }
 
-InputItem.propTypes = {
-    onClickAdd: PropTypes.func.isRequired
-};
+function mapStateToProps(state) {
+    return {
+        allItems: state.todo.items,
+    };
+}
 
-export { InputItem };
+const EnhancedInputItem = connect(mapStateToProps)(InputItem);
+
+export { EnhancedInputItem as InputItem };

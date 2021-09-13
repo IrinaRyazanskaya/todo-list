@@ -1,94 +1,26 @@
-import { useState, useEffect } from 'react';
-import { InputItem } from '../input-item/input-item';
-import { ItemList } from '../item-list/item-list';
-import { Divider } from '../divider/divider';
-import { Footer } from '../footer/footer';
-import styles from './application.module.css';
-import '../../assets/fonts.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Navigation } from '../navigation/navigation';
+import { About } from '../about/about';
+import { Todo } from '../todo/todo';
 
-const initialState = {
-    items: [
-        {
-            value: 'Сделать уборку',
-            isDone: true,
-            optionId: 1
-        },
-        {
-            value: 'Сходить в магазин',
-            isDone: false,
-            optionId: 2
-        },
-        {
-            value: 'Приготовить ужин',
-            isDone: false,
-            optionId: 3
-        }
-    ],
-};
+import styles from './application.module.css';
 
 const Application = () => {
-    const [items, setItems] = useState(initialState.items);
-
-    useEffect(() => {
-        console.log('update');
-    });
-
-    useEffect(() => {
-        console.log('mount');
-    }, []);
-
-    const onClickDone = id => {
-        const newItemList = items.map(item => {
-            const newItem = { ...item };
-
-            if (item.optionId === id) {
-                newItem.isDone = !item.isDone;
-            }
-
-            return newItem;
-        });
-
-        setItems(newItemList);
-    };
-
-    const onClickDelete = id => {
-        const newItemList = items.filter(item => {
-            return item.optionId !== id;
-        });
-
-        setItems(newItemList);
-    };
-
-    const onClickAdd = value => {
-        const newItems = [
-            ...items,
-            {
-                value,
-                isDone: false,
-                optionId: items.length + 1
-            }
-        ];
-
-        setItems(newItems);
-    };
-
     return (
-        <div className={styles.screen}>
+        <Router>
             <div className={styles.wrap}>
-                <h1 className={styles.title}>todo list</h1>
-                <div className={styles.todo}>
-                    <InputItem onClickAdd={onClickAdd} />
-                    <ItemList
-                        items={items}
-                        onClickDone={onClickDone}
-                        onClickDelete={onClickDelete}
-                    />
-                </div>
-                <Divider />
-                <Footer count={items.filter(item => !item.isDone).length} />
+                <Navigation />
+                <Switch>
+                    <Route path="/" exact>
+                        <About />
+                    </Route>
+                    <Route path="/todo">
+                        <Todo />
+                    </Route>
+                </Switch>
             </div>
-        </div>
+        </Router>
     );
-}
+};
 
 export { Application };
