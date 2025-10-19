@@ -1,13 +1,15 @@
 .list {
-    margin: 0 32px;
-    padding: 0;
-    height: 100%;
-    list-style: none;
-    overflow: scroll;
+  overflow: scroll;
+
+  height: 100%;
+  margin: 0 32px;
+  padding: 0;
+
+  list-style: none;
 }
 
-@media (max-width: 726px) {
-    .list {
-        margin: 0 22px;
-    }
+@media (width <= 726px) {
+  .list {
+    margin: 0 22px;
+  }
 }

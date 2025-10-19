@@ -1,26 +1,28 @@
 .list {
-    margin: 12px 0;
-    padding: 0;
-    list-style: none;
-    height: 458px;
-    overflow: scroll;
+  overflow: scroll;
+
+  height: 458px;
+  margin: 12px 0;
+  padding: 0;
+
+  list-style: none;
 }
 
-@media (max-width: 726px) {
-    .list {
-        margin: 6px 0;
-        height: 360px;
-    }
+@media (width <= 726px) {
+  .list {
+    height: 360px;
+    margin: 6px 0;
+  }
 }
 
-@media (max-width: 410px) {
-    .list {
-        height: 330px;
-    }
+@media (width <= 410px) {
+  .list {
+    height: 330px;
+  }
 }
 
-@media (max-width: 354px) {
-    .list {
-        height: 300px;
-    }
+@media (width <= 354px) {
+  .list {
+    height: 300px;
+  }
 }

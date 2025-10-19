@@ -1,121 +1,124 @@
 .wrap {
-    display: flex;
-    flex-direction: column;
-    width: 850px;
-    height: 590px;
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-    color: #5c5c5c;
+  display: flex;
+  flex-direction: column;
+
+  width: 850px;
+  height: 590px;
+
+  color: #5c5c5c;
 }
 
 .aboutError {
-    margin: 0 14px;
-    font-size: 20px;
+  margin: 0 14px;
+  font-size: 20px;
 }
 
 .aboutErrorText {
-    text-align: center;
+  text-align: center;
 }
 
 .aboutWrap,
 .repositoriesWrap {
-    background-color: #fff;
-    box-shadow: 0 3px 10px rgba(104, 104, 104, 0.25);
-    border-radius: 10px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 3px 10px rgb(104 104 104 / 25%);
 }
 
 .aboutWrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 14px;
-    padding: 12px 0;
-    min-height: 176px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 176px;
+  margin-bottom: 14px;
+  padding: 12px 0;
 }
 
 .repositoriesWrap {
-    padding: 20px 0;
-    flex-grow: 1;
-    overflow: scroll;
+  overflow: hidden auto;
+  flex-grow: 1;
+  padding: 20px 0;
 }
 
 .errorWrap,
 .emptyWrap {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 32px;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+  margin-bottom: 32px;
 }
 
 .emptyWrap {
-    margin: 0;
+  margin: 0;
 }
 
 .errorImage,
 .emptyImage {
-    width: 267px;
+  width: 267px;
 }
 
 .errorText,
 .emptyText {
-    margin: 24px 0 8px 0;
-    font-size: 20px;
-    color: #5c5c5c;
+  margin: 24px 0 8px;
+  font-size: 20px;
+  color: #5c5c5c;
 }
 
 .errorSubText,
 .emptySubText {
-    margin: 0;
-    color: #999;
+  margin: 0;
+  color: #999;
 }
 
 .errorLink,
 .emptyLink {
-    color: #62a0b4;
+  color: #62a0b4;
 }
 
 .errorLink:hover,
 .emptyLink:hover {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
-@media (max-width: 890px) {
-    .wrap {
-        width: 700px;
-    }
+@media (width <= 890px) {
+  .wrap {
+    width: 700px;
+  }
 }
 
-@media (max-width: 726px) {
-    .wrap {
-        width: 344px;
-        height: 524px;
-        font-size: 12px;
-    }
+@media (width <= 726px) {
+  .wrap {
+    width: 344px;
+    height: 524px;
+    font-size: 12px;
+  }
 
-    .aboutWrap {
-        margin-bottom: 6px;
-        min-height: 120px;
-    }
+  .aboutWrap {
+    min-height: 120px;
+    margin-bottom: 6px;
+  }
 
-    .emptySubText {
-        width: 182px;
-    }
+  .emptySubText {
+    width: 182px;
+  }
 }
 
-@media (max-width: 410px) {
-    .wrap {
-        height: 494px;
-    }
+@media (width <= 410px) {
+  .wrap {
+    height: 494px;
+  }
 }
 
-@media (max-width: 354px) {
-    .wrap {
-        width: 310px;
-        height: 462px;
-    }
+@media (width <= 354px) {
+  .wrap {
+    width: 310px;
+    height: 462px;
+  }
 
-    .aboutWrap {
-        min-height: 106px;
-    }
+  .aboutWrap {
+    min-height: 106px;
+  }
 }

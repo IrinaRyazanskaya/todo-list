@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+# TODO List 📝
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Веб-приложение, совмещающее блок "Обо мне" с данными из GitHub и удобный организатор списка дел.
 
-## Available Scripts
+## ✨ Ключевая функциональность
 
-In the project directory, you can run:
+- Живой блок "Обо мне" с подгрузкой профиля и репозиториев GitHub через Octokit.
+- Заглушки-загрузчики, которые подстраиваются под мобильный и настольный формат.
+- Список дел с добавлением, редактированием, завершением и удалением задач.
+- Перетаскивание карточек через Drag and Drop и сохранение порядка.
+- Фильтрация задач по статусам и переключение направления сортировки.
+- Сохранение состояния в `localStorage`, чтобы данные не терялись при перезагрузке.
+- Адаптивная вёрстка и аккуратные анимации для комфортной работы на любых устройствах.
 
-### `npm start`
+## 🛠️ Технологический стек
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Интерфейс:** React, TypeScript, React Router.
+- **Управление состоянием:** Redux Toolkit.
+- **Работа с внешними данными:** GitHub REST API, localStorage.
+- **Интерфейс и анимации:** @hello-pangea/dnd, react-content-loader.
+- **Сборка и окружение:** Node.js, NPM Scripts, Vite.
+- **Контроль качества:** ESLint, Stylelint, Prettier, TypeScript.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🚀 Установка и запуск
 
-### `npm test`
+1. Убедитесь, что установлен `Node.js` версии 22 или новее.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Клонируйте репозиторий и перейдите в папку проекта:
 
-### `npm run build`
+   ```bash
+   git clone https://github.com/IrinaRyazanskaya/todo-list.git
+   cd todo-list
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Установите зависимости:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. Запустите проект в режиме разработки:
 
-### `npm run eject`
+   ```bash
+   npm run start
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+   Приложение будет доступно по адресу `http://localhost:5173/`.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+5. Дополнительные команды:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+   ```bash
+   npm run build      # сборка для продакшена
+   npm run preview    # локальный просмотр собранной версии
+   npm run format     # автоформатирование с помощью Prettier
+   npm run lint       # запуск линтеров для проверки качества кода
+   npm run lint-fix   # автоматическое исправление ошибок линтинга
+   ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## 📂 Структура проекта
 
-## Learn More
+```text
+todo-list/
+├── src/
+│   ├── components/         # Компоненты интерфейса: About, TODO, Navigation и вспомогательные блоки
+│   ├── store/              # Конфигурация Redux Toolkit и слайс списка дел
+│   ├── types/              # Типы данных для GitHub API и состояния приложения
+│   └── utils/              # Вспомогательные утилиты (работа с localStorage)
+├── public/                 # Статические файлы, иконки и манифест
+├── dist/                   # Итоговая сборка (создаётся командой build)
+├── package.json            # Скрипты npm и список зависимостей
+├── tsconfig.json           # Настройки TypeScript
+├── vite.config.ts          # Конфигурация Vite
+├── eslint.config.mjs       # Правила линтинга JS/TS
+├── .stylelintrc.json       # Правила линтинга стилей
+└── .prettierrc.json        # Настройки автоформатирования
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 💡 Что реализовано / изучено
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Настроено безопасное взаимодействие с GitHub REST API и обработка ошибок загрузки.
+- Собрана надёжная связка `React + TypeScript + Redux Toolkit` с сохранением данных в браузере.
+- Реализовано перетаскивание карточек поверх Redux без потери порядка элементов.
+- Внедрена адаптивная сетка и заглушки-загрузчики для плавного пользовательского опыта.
 
-### Code Splitting
+## 📚 Решённые проблемы и технические задачи
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Быстрое перетаскивание:** Синхронизация Drag and Drop с Redux и точный пересчёт индексов без
+  лишних перерисовок.
+- **Надёжное хранение данных:** Отдельные утилиты для сохранения в `localStorage` и аккуратное
+  восстановление стандартных значений при ошибках.
+- **Единый пользовательский опыт:** Выбор подходящих заглушек-загрузчиков для мобильных и настольных
+  экранов.
+- **Интеграция с внешним API:** Учёт статусов ответов GitHub и понятные сообщения об ошибках для
+  пользователя.
