@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@hello-pangea/dnd": "^16.0.0",
-    "@material-ui/core": "^4.11.3",
     "@octokit/rest": "^18.5.2",
     "classnames": "^2.0.0",
     "react": "^17.0.1",
