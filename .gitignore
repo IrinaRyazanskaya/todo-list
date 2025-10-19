@@ -5,7 +5,7 @@
 npm-debug.log*
 
 # Artifacts
-/build
+/dist
 
 # Testing
 /coverage

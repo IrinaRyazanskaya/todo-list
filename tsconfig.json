@@ -2,24 +2,23 @@
   "include": ["src"],
   "compilerOptions": {
     "jsx": "react-jsx",
-    "target": "ES2020",
+    "target": "ES2022",
     "module": "ESNext",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
+    "types": ["vite/client"],
+    "verbatimModuleSyntax": true,
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
 
     "noEmit": true,
-    "baseUrl": "src",
-    "isolatedModules": true,
-    "moduleResolution": "node",
+    "moduleDetection": "force",
+    "moduleResolution": "bundler",
 
     "strict": true,
     "skipLibCheck": true,
-    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "useUnknownInCatchVariables": true,
-    "forceConsistentCasingInFileNames": true
+    "noUncheckedSideEffectImports": true
   }
 }
