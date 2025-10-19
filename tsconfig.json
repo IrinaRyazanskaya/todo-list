@@ -2,11 +2,10 @@
   "include": ["src"],
   "compilerOptions": {
     "jsx": "react-jsx",
-    "target": "es2024",
-    "module": "esnext",
+    "target": "ES2020",
+    "module": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
 
-    "allowJs": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,

@@ -3,12 +3,18 @@ import { NavLink } from "react-router-dom";
 
 import styles from "./navigation.module.css";
 
-const NAV_ITEMS = [
+type NavItem = {
+  to: string;
+  label: string;
+  end?: boolean;
+};
+
+const NAV_ITEMS: readonly NavItem[] = [
   { to: "/todo", label: "Дела", end: true },
   { to: "/", label: "Обо мне", end: true },
 ];
 
-const getLinkClassName = ({ isActive }) => {
+const getLinkClassName = ({ isActive }: { isActive: boolean }): string => {
   return classNames(styles.link, { [styles.linkActive]: isActive });
 };
 

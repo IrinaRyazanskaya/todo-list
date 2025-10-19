@@ -1,10 +1,18 @@
 import classnames from "classnames";
-import iconForksSrc from "./forks-icon.svg";
-import iconStarSrc from "./star-icon.svg";
+
+import type { GitHubRepo } from "../../types/github";
 
 import styles from "./repository.module.css";
+import iconStarSrc from "./star-icon.svg";
+import iconForksSrc from "./forks-icon.svg";
 
-const Repository = ({ repo }) => {
+type RepositoryProps = {
+  repo: GitHubRepo;
+};
+
+const Repository = ({ repo }: RepositoryProps) => {
+  const updatedAt = repo.updated_at ? new Date(repo.updated_at) : null;
+
   return (
     <li className={styles.repo}>
       <a className={styles.link} href={repo.html_url} target="_blank" rel="noreferrer">
@@ -36,12 +44,13 @@ const Repository = ({ repo }) => {
         <img className={styles.icon} alt="Иконка forks" src={iconForksSrc} />
         <span className={styles.forks}>{repo.forks_count}</span>
         <span className={styles.date}>
-          {"Updated on " +
-            new Date(repo.updated_at).toLocaleDateString("en-GB", {
-              day: "numeric",
-              month: "short",
-              year: "numeric",
-            })}
+          {updatedAt
+            ? `Updated on ${updatedAt.toLocaleDateString("en-GB", {
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+              })}`
+            : "Updated recently"}
         </span>
       </div>
     </li>

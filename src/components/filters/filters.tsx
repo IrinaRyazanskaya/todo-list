@@ -1,4 +1,15 @@
+import type { TodoFilter } from "../../store/todo";
+
 import styles from "./filters.module.css";
+
+type FiltersProps = {
+  countInProgress: number;
+  countIsDone: number;
+  onClickFilterDone: () => void;
+  onClickFilterActive: () => void;
+  onClickFilterAll: () => void;
+  currentFilter: TodoFilter;
+};
 
 const Filters = ({
   countInProgress,
@@ -7,7 +18,7 @@ const Filters = ({
   onClickFilterActive,
   onClickFilterAll,
   currentFilter,
-}) => (
+}: FiltersProps) => (
   <div className={styles.filters}>
     <div className={styles.wrap}>
       <input

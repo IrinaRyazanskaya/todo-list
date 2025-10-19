@@ -1,8 +1,13 @@
 import { Repository } from "../repository/repository";
+import type { GitHubRepo } from "../../types/github";
 
 import styles from "./repositories-list.module.css";
 
-const RepositoriesList = ({ repoList }) => {
+type RepositoriesListProps = {
+  repoList: GitHubRepo[];
+};
+
+const RepositoriesList = ({ repoList }: RepositoriesListProps) => {
   return (
     <ol className={styles.list}>
       {repoList.map((repo) => (

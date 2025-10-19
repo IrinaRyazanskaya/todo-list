@@ -1,30 +1,50 @@
-import { Octokit } from "@octokit/rest";
-import MediaQuery from "react-responsive";
+import { Component } from "react";
 import { Link } from "react-router-dom";
+import MediaQuery from "react-responsive";
+import { Octokit } from "@octokit/rest";
+
 import { Contacts } from "../contacts/contacts";
 import { RepositoriesList } from "../repositories-list/repositories-list";
+import type { GitHubRepo, GitHubUser } from "../../types/github";
 import { UserLoader } from "./user-loader";
 import { UserMobileLoader } from "./user-mobile-loader";
 import { RepoLoader } from "./repo-loader";
 import { RepoMobileLoader } from "./repo-mobile-loader";
-import { Component } from "react";
-import iconEmptySrc from "./empty-icon.png";
 
 import styles from "./about.module.css";
+import iconEmptySrc from "./empty-icon.png";
 
 const octokit = new Octokit();
 
-class About extends Component {
-  state = {
+type AboutState = {
+  isRepoLoading: boolean;
+  isUserLoading: boolean;
+  repoList: GitHubRepo[];
+  userInfo: GitHubUser | null;
+  userStatus?: number;
+  repoStatus?: number;
+};
+
+const extractStatus = (error: unknown): number | undefined => {
+  if (typeof error === "object" && error !== null && "status" in error) {
+    const { status } = error as { status?: number };
+    return status;
+  }
+
+  return undefined;
+};
+
+class About extends Component<Record<string, never>, AboutState> {
+  state: AboutState = {
     isRepoLoading: true,
     isUserLoading: true,
     repoList: [],
-    userInfo: {},
+    userInfo: null,
     userStatus: undefined,
     repoStatus: undefined,
   };
 
-  componentDidMount() {
+  componentDidMount(): void {
     octokit.repos
       .listForUser({
         username: "IrinaRyazanskaya",
@@ -36,10 +56,10 @@ class About extends Component {
           repoStatus: status,
         });
       })
-      .catch((error) => {
+      .catch((error: unknown) => {
         this.setState({
           isRepoLoading: false,
-          repoStatus: error.status,
+          repoStatus: extractStatus(error),
         });
       });
 
@@ -54,10 +74,10 @@ class About extends Component {
           userStatus: status,
         });
       })
-      .catch((error) => {
+      .catch((error: unknown) => {
         this.setState({
           isUserLoading: false,
-          userStatus: error.status,
+          userStatus: extractStatus(error),
         });
       });
   }
@@ -78,7 +98,7 @@ class About extends Component {
               </MediaQuery>
             </>
           )}
-          {!isUserLoading && userStatus === 200 && <Contacts userInfo={userInfo} />}
+          {!isUserLoading && userStatus === 200 && userInfo && <Contacts userInfo={userInfo} />}
           {!isUserLoading && userStatus !== 200 && (
             <div className={styles.aboutError}>
               <p className={styles.aboutErrorText}>Ошибка загрузки информации о пользователе</p>

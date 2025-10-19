@@ -1,17 +1,35 @@
-import { connect } from "react-redux";
-import { Component } from "react";
 import classnames from "classnames";
+import { connect } from "react-redux";
+import { Component, ChangeEvent } from "react";
+
+import type { RootState } from "../../store";
+import type { TodoItem } from "../../store/todo";
 import { AddButton } from "../add-button/add-button";
 
 import styles from "./input-item.module.css";
 
-class InputItem extends Component {
-  state = {
+type OwnProps = {
+  onClickAdd: (value: string) => void;
+};
+
+type StateProps = {
+  allItems: TodoItem[];
+};
+
+type Props = OwnProps & StateProps;
+
+type State = {
+  inputValue: string;
+  error?: string;
+};
+
+class InputItem extends Component<Props, State> {
+  state: State = {
     inputValue: "",
     error: undefined,
   };
 
-  onAddButtonClick = () => {
+  onAddButtonClick = (): void => {
     if (this.state.inputValue === "") {
       this.setState({ error: "Пожалуйста, введите текст" });
       return;
@@ -24,14 +42,17 @@ class InputItem extends Component {
       }
     }
 
+    const { onClickAdd } = this.props;
+    const { inputValue } = this.state;
+
+    onClickAdd(inputValue);
+
     this.setState({
       inputValue: "",
     });
-
-    this.props.onClickAdd(this.state.inputValue);
   };
 
-  onInputChange = (event) => {
+  onInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
     this.setState({
       inputValue: event.target.value,
       error: undefined,
@@ -39,21 +60,21 @@ class InputItem extends Component {
   };
 
   render() {
-    const showError = this.state.error;
+    const { error, inputValue } = this.state;
 
     return (
       <div className={styles.wrap}>
-        {showError && <div className={styles.error}>{showError}</div>}
+        {error && <div className={styles.error}>{error}</div>}
         <input
           className={classnames({
             [styles.field]: true,
-            [styles.fieldError]: showError,
+            [styles.fieldError]: Boolean(error),
           })}
           type="text"
           id="input-field"
           name="text"
           placeholder="Добавить задание"
-          value={this.state.inputValue}
+          value={inputValue}
           onChange={this.onInputChange}
         />
         <AddButton onClickAdd={this.onAddButtonClick} />
@@ -62,12 +83,12 @@ class InputItem extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    allItems: state.todo.items,
-  };
-}
+const mapStateToProps = (state: RootState): StateProps => ({
+  allItems: state.todo.items,
+});
 
-const EnhancedInputItem = connect(mapStateToProps)(InputItem);
+const EnhancedInputItem = connect<StateProps, Record<string, never>, OwnProps, RootState>(
+  mapStateToProps,
+)(InputItem);
 
 export { EnhancedInputItem as InputItem };

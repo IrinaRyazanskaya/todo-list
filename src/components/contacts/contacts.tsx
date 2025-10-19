@@ -1,3 +1,6 @@
+import type { GitHubUser } from "../../types/github";
+
+import styles from "./contacts.module.css";
 import iconPhoneSrc from "./phone-icon.svg";
 import iconEmailSrc from "./email-icon.svg";
 import iconGithubSrc from "./github-icon.svg";
@@ -5,9 +8,11 @@ import iconTelegramSrc from "./telegram-icon.svg";
 import iconInstagramSrc from "./instagram-icon.svg";
 import iconVkSrc from "./vk-icon.svg";
 
-import styles from "./contacts.module.css";
+type ContactsProps = {
+  userInfo: GitHubUser;
+};
 
-const Contacts = ({ userInfo }) => {
+const Contacts = ({ userInfo }: ContactsProps) => {
   return (
     <div className={styles.about}>
       <img src={userInfo.avatar_url} alt="Аватар пользователя" className={styles.photo} />

@@ -1,17 +1,22 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import type { DropResult } from "@hello-pangea/dnd";
 
+import type { TodoFilter, TodoItem, TodoSort } from "../../store/todo";
+import type { AppDispatch, RootState } from "../../store";
 import { InputItem } from "../input-item/input-item";
 import { ItemList } from "../item-list/item-list";
 import { Divider } from "../divider/divider";
 import { Filters } from "../filters/filters";
-import iconEmptySrc from "./icon-empty.png";
-import iconSortSrc from "./sort-icon.svg";
 
 import styles from "./todo.module.css";
+import iconEmptySrc from "./icon-empty.png";
+import iconSortSrc from "./sort-icon.svg";
 import "../../assets/fonts.css";
 
 const Todo = () => {
-  const items = useSelector((state) => {
+  const dispatch = useDispatch<AppDispatch>();
+
+  const items = useSelector<RootState, TodoItem[]>((state) => {
     const { items, filter, sort } = state.todo;
     let itemsToShow = items;
 
@@ -28,63 +33,53 @@ const Todo = () => {
     return itemsToShow;
   });
 
-  const itemsСount = useSelector((state) => {
-    return state.todo.items;
-  });
+  const itemsCount = useSelector<RootState, TodoItem[]>((state) => state.todo.items);
+  const currentFilter = useSelector<RootState, TodoFilter>((state) => state.todo.filter);
+  const currentSort = useSelector<RootState, TodoSort>((state) => state.todo.sort);
 
-  const dispatch = useDispatch();
-
-  const onClickAdd = (value) => {
+  const onClickAdd = (value: string): void => {
     dispatch({
       type: "todo/add",
       payload: value,
     });
   };
 
-  const onClickDelete = (id) => {
+  const onClickDelete = (id: number): void => {
     dispatch({
       type: "todo/delete",
       payload: id,
     });
   };
 
-  const onClickDone = (id) => {
+  const onClickDone = (id: number): void => {
     dispatch({
       type: "todo/done",
       payload: id,
     });
   };
 
-  const currentFilter = useSelector((state) => {
-    return state.todo.filter;
-  });
-
-  const onClickFilterAll = () => {
+  const onClickFilterAll = (): void => {
     dispatch({
       type: "todo/filter",
       payload: "all",
     });
   };
 
-  const onClickFilterActive = () => {
+  const onClickFilterActive = (): void => {
     dispatch({
       type: "todo/filter",
       payload: "active",
     });
   };
 
-  const onClickFilterDone = () => {
+  const onClickFilterDone = (): void => {
     dispatch({
       type: "todo/filter",
       payload: "done",
     });
   };
 
-  const currentSort = useSelector((state) => {
-    return state.todo.sort;
-  });
-
-  const onClickSort = () => {
+  const onClickSort = (): void => {
     if (currentSort === "normal") {
       dispatch({
         type: "todo/sort",
@@ -98,21 +93,30 @@ const Todo = () => {
     }
   };
 
-  const handleOnDragEnd = (result) => {
+  const handleOnDragEnd = (result: DropResult): void => {
     if (!result.destination) {
+      return;
+    }
+
+    const { source, destination } = result;
+
+    const sourceItem = items[source.index];
+    const destinationItem = items[destination.index];
+
+    if (!sourceItem || !destinationItem) {
       return;
     }
 
     dispatch({
       type: "todo/reorder",
       payload: {
-        source: items[result.source.index].optionId,
-        destination: items[result.destination.index].optionId,
+        source: sourceItem.optionId,
+        destination: destinationItem.optionId,
       },
     });
   };
 
-  const onChangeItem = (id, value) => {
+  const onChangeItem = (id: number, value: string): void => {
     dispatch({
       type: "todo/change",
       payload: {
@@ -131,8 +135,8 @@ const Todo = () => {
             <img className={styles.sortIcon} src={iconSortSrc} alt="Стрелки вверх и вниз" />
           </button>
           <Filters
-            countInProgress={itemsСount.filter((item) => !item.isDone).length}
-            countIsDone={itemsСount.filter((item) => item.isDone).length}
+            countInProgress={itemsCount.filter((item) => !item.isDone).length}
+            countIsDone={itemsCount.filter((item) => item.isDone).length}
             onClickFilterAll={onClickFilterAll}
             onClickFilterActive={onClickFilterActive}
             onClickFilterDone={onClickFilterDone}
@@ -141,7 +145,7 @@ const Todo = () => {
         </header>
         <div className={styles.todo}>
           <InputItem onClickAdd={onClickAdd} />
-          {itemsСount.length === 0 ? (
+          {itemsCount.length === 0 ? (
             <div className={styles.emptyWrap}>
               <img src={iconEmptySrc} alt="Девушка записывает дела" className={styles.emptyImage} />
               <p className={styles.emptyText}>Вы ещё не добавили ни одной задачи</p>
