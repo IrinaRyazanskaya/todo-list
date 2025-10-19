@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@hello-pangea/dnd": "^16.0.0",
-    "@octokit/rest": "^18.5.2",
+    "@octokit/rest": "^22.0.0",
     "classnames": "^2.0.0",
     "react": "^17.0.1",
     "react-content-loader": "^7.0.0",
