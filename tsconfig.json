@@ -1,0 +1,26 @@
+{
+  "include": ["src"],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "target": "es2024",
+    "module": "esnext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+
+    "allowJs": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+
+    "noEmit": true,
+    "baseUrl": "src",
+    "isolatedModules": true,
+    "moduleResolution": "node",
+
+    "strict": true,
+    "skipLibCheck": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "useUnknownInCatchVariables": true,
+    "forceConsistentCasingInFileNames": true
+  }
+}
