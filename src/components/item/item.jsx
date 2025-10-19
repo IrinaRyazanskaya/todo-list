@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Draggable } from "react-beautiful-dnd";
 import classnames from "classnames";
-import iconDeleteSrc from "./delete-icon.svg";
+import { Draggable } from "@hello-pangea/dnd";
 
 import styles from "./item.module.css";
+import iconDeleteSrc from "./delete-icon.svg";
 
 const Item = ({ value, isDone, optionId, index, onClickDone, onClickDelete, onChangeItem }) => {
   const [toggle, setToggle] = useState(true);
