@@ -4,30 +4,33 @@
 }
 
 .photo {
-  margin: 0 40px 0 12px;
+  flex: 0 0 176px;
+
   width: 176px;
   height: 176px;
+  margin: 0 40px 0 12px;
   border-radius: 9px;
+
   object-fit: cover;
-  flex: 0 0 176px;
 }
 
 .infoWrap {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-right: 12px;
+
   width: 100%;
+  margin-right: 12px;
 }
 
 .name {
-  margin: 4px 0 8px 0;
+  margin: 4px 0 8px;
   font-size: 28px;
   font-weight: normal;
 }
 
 .text {
-  margin: 0 0 8px 0;
+  margin: 0 0 8px;
 }
 
 .contact {
@@ -41,8 +44,8 @@
 }
 
 .contactLink {
-  text-decoration: none;
   color: #5c5c5c;
+  text-decoration: none;
 }
 
 .contactLink:hover,
@@ -61,23 +64,23 @@
   margin-left: 8px;
 }
 
-@media (max-width: 890px) {
+@media (width <= 890px) {
   .photo {
-    margin: 0 16px 0 12px;
     width: 176px;
+    margin: 0 16px 0 12px;
   }
 }
 
-@media (max-width: 726px) {
+@media (width <= 726px) {
   .infoWrap {
     margin-right: 10px;
   }
 
   .photo {
-    margin: 0 6px 0 10px;
+    flex: 0 0 120px;
     width: 120px;
     height: 120px;
-    flex: 0 0 120px;
+    margin: 0 6px 0 10px;
   }
 
   .contacts {
@@ -101,11 +104,11 @@
   }
 }
 
-@media (max-width: 354px) {
+@media (width <= 354px) {
   .photo {
+    flex: 0 0 94px;
     width: 94px;
     height: 94px;
-    flex: 0 0 94px;
   }
 
   .name {

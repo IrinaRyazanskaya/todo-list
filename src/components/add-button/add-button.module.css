@@ -1,17 +1,21 @@
 .button {
-  padding: 0;
+  cursor: pointer;
+
   flex-shrink: 0;
+
   width: 36px;
   height: 36px;
-  font-size: 40px;
-  font-weight: 300;
-  color: #fff;
-  line-height: 36px;
-  background-color: #c2c2c2;
+  padding: 0;
   border: none;
   border-radius: 0 8px 8px 0;
+
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 36px;
+  color: #fff;
+
+  background-color: #c2c2c2;
   outline: none;
-  cursor: pointer;
 }
 
 .button:hover {

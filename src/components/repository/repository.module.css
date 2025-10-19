@@ -17,7 +17,9 @@
 .info {
   display: flex;
   align-items: center;
+
   margin-top: 6px;
+
   font-size: 14px;
   color: #999;
 }
@@ -72,7 +74,7 @@
   margin-right: 0;
 }
 
-@media (max-width: 726px) {
+@media (width <= 726px) {
   .date {
     display: none;
   }
