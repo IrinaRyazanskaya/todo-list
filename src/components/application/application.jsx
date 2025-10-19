@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navigation } from "../navigation/navigation";
 import { About } from "../about/about";
 import { Todo } from "../todo/todo";
@@ -10,14 +10,10 @@ const Application = () => {
     <Router>
       <div className={styles.wrap}>
         <Navigation />
-        <Switch>
-          <Route path="/" exact>
-            <About />
-          </Route>
-          <Route path="/todo">
-            <Todo />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path="/" element={<About />} />
+          <Route path="/todo" element={<Todo />} />
+        </Routes>
       </div>
     </Router>
   );
