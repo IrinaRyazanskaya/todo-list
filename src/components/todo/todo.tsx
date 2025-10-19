@@ -12,7 +12,6 @@ import { Filters } from "../filters/filters";
 import styles from "./todo.module.css";
 import iconEmptySrc from "./icon-empty.png";
 import iconSortSrc from "./sort-icon.svg";
-import "../../assets/fonts.css";
 
 const Todo = () => {
   const dispatch = useDispatch<AppDispatch>();

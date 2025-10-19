@@ -5,8 +5,11 @@
 
 .photo {
   margin: 0 40px 0 12px;
+  width: 176px;
   height: 176px;
   border-radius: 9px;
+  object-fit: cover;
+  flex: 0 0 176px;
 }
 
 .infoWrap {
@@ -61,6 +64,7 @@
 @media (max-width: 890px) {
   .photo {
     margin: 0 16px 0 12px;
+    width: 176px;
   }
 }
 
@@ -71,7 +75,9 @@
 
   .photo {
     margin: 0 6px 0 10px;
+    width: 120px;
     height: 120px;
+    flex: 0 0 120px;
   }
 
   .contacts {
@@ -97,7 +103,9 @@
 
 @media (max-width: 354px) {
   .photo {
+    width: 94px;
     height: 94px;
+    flex: 0 0 94px;
   }
 
   .name {

@@ -3,7 +3,6 @@
   flex-direction: column;
   width: 850px;
   height: 590px;
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
   color: #5c5c5c;
 }
 
@@ -35,7 +34,8 @@
 .repositoriesWrap {
   padding: 20px 0;
   flex-grow: 1;
-  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .errorWrap,
