@@ -8,7 +8,7 @@ import styles from "./application.module.css";
 
 const Application = () => {
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <div className={styles.wrap}>
         <Navigation />
         <Routes>

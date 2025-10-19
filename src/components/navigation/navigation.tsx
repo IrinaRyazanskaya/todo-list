@@ -10,8 +10,8 @@ type NavItem = {
 };
 
 const NAV_ITEMS: readonly NavItem[] = [
-  { to: "/todo", label: "Дела", end: true },
   { to: "/", label: "Обо мне", end: true },
+  { to: "/todo", label: "Дела", end: true },
 ];
 
 const getLinkClassName = ({ isActive }: { isActive: boolean }): string => {
