@@ -1,7 +1,8 @@
 import classnames from "classnames";
+import { useState } from "react";
+import type { ChangeEvent, KeyboardEvent } from "react";
 import { Draggable } from "@hello-pangea/dnd";
 import type { DraggableProvided } from "@hello-pangea/dnd";
-import { ChangeEvent, FocusEvent, KeyboardEvent, useState } from "react";
 
 import styles from "./item.module.css";
 import iconDeleteSrc from "./delete-icon.svg";
@@ -41,7 +42,7 @@ const Item = ({
     }
   };
 
-  const handleInputBlur = (_event: FocusEvent<HTMLInputElement>): void => {
+  const handleInputBlur = (): void => {
     setToggle(true);
     onChangeItem(optionId, internalValue);
   };
