@@ -1,9 +1,9 @@
-import styles from './add-button.module.css';
+import styles from "./add-button.module.css";
 
 const AddButton = ({ onClickAdd }) => (
-    <button className={styles.button} onClick={onClickAdd}>
-        +
-    </button>
+  <button className={styles.button} onClick={onClickAdd}>
+    +
+  </button>
 );
 
 export { AddButton };

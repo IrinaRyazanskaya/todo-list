@@ -1,119 +1,119 @@
 .wrap {
-    padding-top: 24px;
-    width: 850px;
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-    background-color: #fff;
-    box-shadow: 0 3px 10px rgba(104, 104, 104, 0.25);
-    border-radius: 10px;
+  padding-top: 24px;
+  width: 850px;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  background-color: #fff;
+  box-shadow: 0 3px 10px rgba(104, 104, 104, 0.25);
+  border-radius: 10px;
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 30px;
-    margin: 0 32px 18px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+  margin: 0 32px 18px 32px;
 }
 
 .sort {
-    display: flex;
-    align-items: center;
-    margin-bottom: 2px;
-    padding: 0;
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    font-weight: 300;
-    color: #5c5c5c;
-    border: none;
-    background-color: transparent;
-    outline: none;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px;
+  padding: 0;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  color: #5c5c5c;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
 }
 
 .sort:hover {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
 .sortIcon {
-    margin-left: 4px;
+  margin-left: 4px;
 }
 
 .todo {
-    margin: 0 32px;
+  margin: 0 32px;
 }
 
 .emptyWrap {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 32px;
-    height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 32px;
+  height: 450px;
 }
 
 .emptyImage {
-    width: 267px;
+  width: 267px;
 }
 
 .emptyText {
-    margin: 24px 0 8px 0;
-    font-size: 20px;
-    color: #5c5c5c;
+  margin: 24px 0 8px 0;
+  font-size: 20px;
+  color: #5c5c5c;
 }
 
 .emptySubText {
-    margin: 0;
-    color: #999;
+  margin: 0;
+  color: #999;
 }
 
 @media (max-width: 890px) {
-    .wrap {
-        width: 700px;
-    }
+  .wrap {
+    width: 700px;
+  }
 }
 
 @media (max-width: 726px) {
-    .wrap {
-        padding-top: 16px;
-        width: 344px;
-    }
+  .wrap {
+    padding-top: 16px;
+    width: 344px;
+  }
 
-    .todo {
-        margin: 0 20px;
-    }
+  .todo {
+    margin: 0 20px;
+  }
 
-    .header {
-        flex-wrap: wrap;
-        margin: 0 20px 10px 20px;
-        height: 88px;
-    }
+  .header {
+    flex-wrap: wrap;
+    margin: 0 20px 10px 20px;
+    height: 88px;
+  }
 
-    .sort {
-        margin: 0 0 0 10px;
-    }
+  .sort {
+    margin: 0 0 0 10px;
+  }
 
-    .emptyWrap {
-        margin-bottom: 12px;
-        height: 360px;;
-    }
+  .emptyWrap {
+    margin-bottom: 12px;
+    height: 360px;
+  }
 
-    .emptyText {
-        text-align: center;
-    }
+  .emptyText {
+    text-align: center;
+  }
 }
 
 @media (max-width: 410px) {
-    .emptyWrap {
-        height: 330px;
-    }
+  .emptyWrap {
+    height: 330px;
+  }
 }
 
 @media (max-width: 354px) {
-    .wrap {
-        width: 310px;
-    }
+  .wrap {
+    width: 310px;
+  }
 
-    .emptyWrap {
-        height: 300px;
-    }
+  .emptyWrap {
+    height: 300px;
+  }
 }

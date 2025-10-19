@@ -1,11 +1,11 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers } from "redux";
 
-import { todoReducer } from './todo';
+import { todoReducer } from "./todo";
 
 const store = createStore(
-    combineReducers({
-        todo: todoReducer,
-    })
+  combineReducers({
+    todo: todoReducer,
+  }),
 );
 
 export { store };
