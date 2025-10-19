@@ -3,6 +3,7 @@ import type { DropResult } from "@hello-pangea/dnd";
 
 import type { TodoFilter, TodoItem, TodoSort } from "../../store/todo";
 import type { AppDispatch, RootState } from "../../store";
+import { todoActions } from "../../store/todo";
 import { InputItem } from "../input-item/input-item";
 import { ItemList } from "../item-list/item-list";
 import { Divider } from "../divider/divider";
@@ -38,58 +39,34 @@ const Todo = () => {
   const currentSort = useSelector<RootState, TodoSort>((state) => state.todo.sort);
 
   const onClickAdd = (value: string): void => {
-    dispatch({
-      type: "todo/add",
-      payload: value,
-    });
+    dispatch(todoActions.addItem(value));
   };
 
   const onClickDelete = (id: number): void => {
-    dispatch({
-      type: "todo/delete",
-      payload: id,
-    });
+    dispatch(todoActions.deleteItem(id));
   };
 
   const onClickDone = (id: number): void => {
-    dispatch({
-      type: "todo/done",
-      payload: id,
-    });
+    dispatch(todoActions.toggleDone(id));
   };
 
   const onClickFilterAll = (): void => {
-    dispatch({
-      type: "todo/filter",
-      payload: "all",
-    });
+    dispatch(todoActions.setFilter("all"));
   };
 
   const onClickFilterActive = (): void => {
-    dispatch({
-      type: "todo/filter",
-      payload: "active",
-    });
+    dispatch(todoActions.setFilter("active"));
   };
 
   const onClickFilterDone = (): void => {
-    dispatch({
-      type: "todo/filter",
-      payload: "done",
-    });
+    dispatch(todoActions.setFilter("done"));
   };
 
   const onClickSort = (): void => {
     if (currentSort === "normal") {
-      dispatch({
-        type: "todo/sort",
-        payload: "reverse",
-      });
+      dispatch(todoActions.setSort("reverse"));
     } else if (currentSort === "reverse") {
-      dispatch({
-        type: "todo/sort",
-        payload: "normal",
-      });
+      dispatch(todoActions.setSort("normal"));
     }
   };
 
@@ -107,23 +84,21 @@ const Todo = () => {
       return;
     }
 
-    dispatch({
-      type: "todo/reorder",
-      payload: {
+    dispatch(
+      todoActions.reorderItems({
         source: sourceItem.optionId,
         destination: destinationItem.optionId,
-      },
-    });
+      }),
+    );
   };
 
   const onChangeItem = (id: number, value: string): void => {
-    dispatch({
-      type: "todo/change",
-      payload: {
+    dispatch(
+      todoActions.changeItem({
         id,
         value,
-      },
-    });
+      }),
+    );
   };
 
   return (
